@@ -1,753 +1,353 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SnapMeetUp</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box}
 body{
-    margin:0;
-    background:#04111c;
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
+  margin:0;
+  background:#07111d;
+  color:#fff;
+  font-family:Arial,sans-serif
 }
-
-button,
-input,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-/* ==============================
-   MAIN PAGE
-============================== */
+button,input,select{font:inherit}
 
 .page{
-    min-height:100vh;
-    display:grid;
-    grid-template-columns:minmax(0,3fr) minmax(330px,1.05fr);
+  display:grid;
+  grid-template-columns:minmax(0,3fr) minmax(300px,1fr);
+  min-height:100vh
 }
 
-.left{
-    border-right:3px solid #ff147d;
-}
-
-/* ==============================
-   HEADER
-============================== */
+.main{border-right:2px solid #ff2585}
 
 header{
-    height:62px;
-    padding:0 4%;
-    display:flex;
-    align-items:center;
-    gap:26px;
-    background:#03101a;
-    border-bottom:1px solid #20313f;
+  height:72px;
+  display:flex;
+  align-items:center;
+  padding:0 5%;
+  gap:30px;
+  background:#050d16
 }
 
-.logo{
-    font-size:22px;
-    font-weight:900;
-    white-space:nowrap;
-}
-
-.pink{
-    color:#ff197f;
-}
+.logo{font-size:25px;font-weight:900}
+.logo span,.pink{color:#ff2b88}
 
 nav{
-    display:flex;
-    gap:22px;
-    font-size:12px;
+  display:flex;
+  gap:25px;
+  margin:auto
 }
 
-nav a:hover,
-nav a.active{
-    color:#ff197f;
+nav a{
+  color:#fff;
+  text-decoration:none;
+  font-size:14px
 }
 
-.space{
-    flex:1;
+.topbtn{
+  border:0;
+  border-radius:22px;
+  padding:11px 20px;
+  color:#fff;
+  background:#ff2585;
+  font-weight:700
 }
 
-.top-button{
-    padding:9px 17px;
-    border:1px solid #34495b;
-    border-radius:22px;
-    background:#091723;
-    color:white;
+.login{
+  border:1px solid #657080;
+  background:transparent
 }
-
-.top-button.register{
-    background:#ff197f;
-    border-color:#ff197f;
-    font-weight:bold;
-}
-
-/* ==============================
-   HERO
-============================== */
 
 .hero{
-    min-height:355px;
-    display:grid;
-    grid-template-columns:1.05fr .95fr;
-    background:#081621;
+  min-height:380px;
+  padding:55px 5%;
+  position:relative;
+  overflow:hidden;
+  background:#0b1624
 }
 
 .hero-content{
-    padding:45px 5%;
+  position:relative;
+  z-index:2;
+  max-width:600px
 }
 
-.hero-content h1{
-    margin:0 0 15px;
-    font-size:44px;
-    line-height:1.06;
+h1{
+  font-size:46px;
+  line-height:1.03;
+  margin:0 0 18px
 }
 
-.hero-content p{
-    color:#d2d8dd;
-    font-size:14px;
-    line-height:1.55;
+h1 span{color:#ff2b88}
+
+.sub{
+  color:#d4d9e0;
+  line-height:1.55
 }
 
 .search{
-    max-width:560px;
-    margin-top:20px;
-    display:flex;
+  display:flex;
+  margin-top:24px;
+  max-width:520px
 }
 
 .search input{
-    width:100%;
-    padding:14px;
-    border:0;
-    outline:0;
-    border-radius:8px 0 0 8px;
+  flex:1;
+  padding:15px;
+  border:0;
+  border-radius:12px 0 0 12px
 }
 
 .search button{
-    width:55px;
-    border:0;
-    background:#ff197f;
-    color:white;
-    border-radius:0 8px 8px 0;
-    font-size:19px;
+  width:54px;
+  border:0;
+  background:#ff2585;
+  color:#fff;
+  border-radius:0 12px 12px 0
 }
 
 .filters{
-    margin-top:16px;
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px
 }
 
-.filter{
-    padding:8px 15px;
-    border:1px solid #34495b;
-    border-radius:20px;
-    background:#0d1b28;
-    color:white;
+.filters button{
+  border:1px solid #435064;
+  background:#101c2b;
+  color:#fff;
+  padding:9px 18px;
+  border-radius:22px
 }
 
-.filter.active{
-    background:#ff197f;
-    border-color:#ff197f;
+.filters .active{
+  background:#ff2585;
+  border-color:#ff2585
 }
 
-/* ==============================
-   HERO PHOTO
-============================== */
+section{padding:22px 5%}
 
-.hero-photo{
-    position:relative;
-    overflow:hidden;
-
-    background:
-    radial-gradient(circle at 50% 25%,#78495c,#322333 45%,#111d28 100%);
+.title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center
 }
 
-.hero-person{
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:flex-end;
+.title h2{font-size:22px}
+
+.title a{
+  color:#ddd;
+  text-decoration:none;
+  border:1px solid #455266;
+  padding:8px 15px;
+  border-radius:20px
 }
 
-.hero-person::before{
-    content:"";
-    width:74%;
-    height:88%;
-    border-radius:48% 48% 15% 15%;
-    background:
-    radial-gradient(circle at 50% 26%,
-    #f0c6b4 0 12%,
-    #2d1717 13% 23%,
-    transparent 24%),
-    linear-gradient(150deg,#18151b 25%,#f3d6c8 26% 48%,#111 49%);
-    filter:drop-shadow(0 15px 25px rgba(0,0,0,.6));
+.grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px
 }
 
-.neon{
-    position:absolute;
-    right:22px;
-    top:60px;
-    color:#ff7bb6;
-    font-size:27px;
-    line-height:1.25;
-    transform:rotate(-5deg);
-
-    text-shadow:
-    0 0 7px #ff197f,
-    0 0 16px #ff197f,
-    0 0 25px #ff197f;
+.card{
+  background:#101b29;
+  border:1px solid #2d3b4c;
+  border-radius:11px;
+  overflow:hidden;
+  padding-bottom:10px;
+  box-shadow:0 8px 24px #0004
 }
 
-/* ==============================
-   SECTIONS
-============================== */
-
-.section{
-    padding:25px 4%;
+.photo{
+  height:145px;
+  background:#182636 center/cover no-repeat;
+  position:relative
 }
 
-.section-heading{
-    display:flex;
-    align-items:center;
-    margin-bottom:14px;
+.photo b{
+  position:absolute;
+  top:8px;
+  left:8px;
+  background:#ff2b88;
+  padding:5px 9px;
+  border-radius:12px;
+  font-size:11px
 }
 
-.section-heading h2{
-    margin:0;
-    font-size:20px;
+.photo i{
+  position:absolute;
+  right:8px;
+  top:8px;
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:#16df70;
+  box-shadow:0 0 8px #16df70
 }
 
-.section-heading button{
-    margin-left:auto;
+.card h3{
+  margin:10px 10px 3px;
+  font-size:15px
 }
 
-/* ==============================
-   PROFILE GRID
-============================== */
-
-.profiles{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:13px;
+.card small{
+  margin:0 10px;
+  color:#ccd4df
 }
 
-.profile{
-    position:relative;
-    overflow:hidden;
-    border:1px solid #304354;
-    border-radius:10px;
-    background:#0b1926;
-    transition:.2s;
+.card button{
+  display:block;
+  width:calc(100% - 16px);
+  margin:10px 8px 0;
+  border:0;
+  border-radius:7px;
+  background:#ffea18;
+  color:#101010;
+  padding:9px 4px;
+  font-weight:800
 }
 
-.profile:hover{
-    transform:translateY(-4px);
-    border-color:#ff197f;
+.side{
+  background:linear-gradient(#d71970,#8f1557);
+  padding:26px 20px
 }
 
-.profile-photo{
-    position:relative;
-    height:175px;
-    overflow:hidden;
-}
-
-/*
- Demo profile photos are visual placeholders.
- Real user-uploaded profile photos will replace these
- after the backend/profile system is connected.
-*/
-
-.profile-photo::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    radial-gradient(circle at 50% 32%,
-    var(--skin) 0 13%,
-    var(--hair) 14% 25%,
-    transparent 26%),
-    linear-gradient(
-    145deg,
-    var(--bg1),
-    var(--bg2)
-    );
-}
-
-.profile-photo::after{
-    content:"";
-    position:absolute;
-    width:56%;
-    height:57%;
-    left:22%;
-    bottom:-8%;
-    border-radius:50% 50% 15% 15%;
-    background:var(--shirt);
-    box-shadow:0 -40px 50px rgba(0,0,0,.18);
-}
-
-.girl1{
-    --skin:#e8b79f;
-    --hair:#241414;
-    --bg1:#5c4351;
-    --bg2:#162736;
-    --shirt:#17171c;
-}
-
-.girl2{
-    --skin:#edc4ac;
-    --hair:#d2b58b;
-    --bg1:#5d6673;
-    --bg2:#26303b;
-    --shirt:#eee8dc;
-}
-
-.girl3{
-    --skin:#c98e74;
-    --hair:#181010;
-    --bg1:#624447;
-    --bg2:#212b34;
-    --shirt:#c79b87;
-}
-
-.girl4{
-    --skin:#e4b29a;
-    --hair:#171213;
-    --bg1:#354755;
-    --bg2:#101d27;
-    --shirt:#28313a;
-}
-
-.girl5{
-    --skin:#edc1a8;
-    --hair:#1c1314;
-    --bg1:#684552;
-    --bg2:#172733;
-    --shirt:#7e304b;
-}
-
-.girl6{
-    --skin:#b8785f;
-    --hair:#17100f;
-    --bg1:#3e4b55;
-    --bg2:#15232d;
-    --shirt:#202a32;
-}
-
-.girl7{
-    --skin:#e0a78f;
-    --hair:#211416;
-    --bg1:#694b58;
-    --bg2:#172631;
-    --shirt:#141a21;
-}
-
-.girl8{
-    --skin:#ecc0a8;
-    --hair:#c5a16f;
-    --bg1:#576573;
-    --bg2:#1a2833;
-    --shirt:#e2d6ca;
-}
-
-.girl9{
-    --skin:#d89d84;
-    --hair:#2a1815;
-    --bg1:#51404b;
-    --bg2:#182832;
-    --shirt:#5d2738;
-}
-
-.girl10{
-    --skin:#efc4ac;
-    --hair:#1d1313;
-    --bg1:#4d5360;
-    --bg2:#15232e;
-    --shirt:#202229;
-}
-
-.featured{
-    position:absolute;
-    left:7px;
-    top:7px;
-    z-index:5;
-
-    padding:4px 8px;
-
-    border-radius:10px;
-
-    background:#ff197f;
-
-    font-size:9px;
-    font-weight:bold;
-}
-
-.online{
-    position:absolute;
-    right:8px;
-    top:8px;
-
-    width:11px;
-    height:11px;
-
-    border-radius:50%;
-
-    background:#22e684;
-
-    box-shadow:
-    0 0 7px #22e684;
-
-    z-index:5;
-}
-
-.profile-info{
-    padding:10px;
-}
-
-.profile-info h3{
-    margin:0 0 5px;
-    font-size:14px;
-}
-
-.profile-info p{
-    margin:0 0 10px;
-
-    color:#d5dce1;
-
-    font-size:10px;
-}
-
-.snap-button{
-    width:100%;
-
-    padding:9px;
-
-    border:0;
-    border-radius:6px;
-
-    background:#ffe51c;
-
-    color:#111;
-
-    font-size:11px;
-    font-weight:900;
-}
-
-/* ==============================
-   RIGHT SIDE
-============================== */
-
-.right{
-    padding:13px;
-
-    background:#06141f;
+.auth{
+  background:#07111d;
+  border-radius:12px;
+  padding:22px;
+  position:sticky;
+  top:18px
 }
 
 .tabs{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    border:2px solid #ff197f;
-
-    border-radius:9px;
-
-    overflow:hidden;
-
-    margin-bottom:15px;
+  display:flex;
+  border-bottom:1px solid #344252;
+  margin-bottom:20px
 }
 
 .tabs button{
-    padding:13px;
-
-    border:0;
-
-    background:#171523;
-
-    color:white;
+  flex:1;
+  padding:12px;
+  border:0;
+  background:none;
+  color:#aaa;
+  font-weight:800
 }
 
-.tabs button.active{
-    background:#ff197f;
+.tabs .on{
+  color:#ff2b88;
+  border-bottom:2px solid #ff2b88
 }
 
-.panel{
-    padding:17px;
+.auth h2{margin:0 0 6px}
 
-    margin-bottom:15px;
-
-    border:2px solid #ff197f;
-
-    border-radius:10px;
+.auth p{
+  color:#aeb7c4;
+  font-size:13px
 }
 
-.panel h2{
-    margin:0 0 7px;
-
-    font-size:20px;
+label{
+  display:block;
+  margin:15px 0 6px;
+  font-size:13px;
+  font-weight:700
 }
 
-.panel p{
-    color:#d1d7dc;
-
-    font-size:12px;
-
-    line-height:1.5;
+.auth input{
+  width:100%;
+  padding:12px;
+  background:#111d2b;
+  border:1px solid #465467;
+  border-radius:7px;
+  color:#fff
 }
 
-.field{
-    width:100%;
-
-    padding:11px;
-
-    margin:6px 0;
-
-    border:1px solid #34495b;
-
-    border-radius:6px;
-
-    outline:0;
-
-    background:#0c1b28;
-
-    color:white;
+.hint{
+  font-size:11px;
+  color:#8f9aaa;
+  margin-top:6px
 }
 
-.field:focus{
-    border-color:#ff197f;
+.check{
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+  margin:15px 0;
+  font-size:12px
 }
 
-.allowed{
-    margin:5px 0 10px;
-
-    color:#bec8cf;
-
-    font-size:10px;
-
-    line-height:1.5;
+.check input{
+  width:auto;
+  margin-top:2px
 }
 
 .create{
-    width:100%;
-
-    padding:12px;
-
-    margin-top:8px;
-
-    border:0;
-
-    border-radius:6px;
-
-    background:#ff197f;
-
-    color:white;
-
-    font-weight:bold;
+  width:100%;
+  border:0;
+  background:#ff2585;
+  color:#fff;
+  padding:13px;
+  border-radius:7px;
+  font-weight:800
 }
 
-.google{
-    width:100%;
-
-    padding:11px;
-
-    margin-top:12px;
-
-    border:1px solid #ff197f;
-
-    border-radius:6px;
-
-    background:#071520;
-
-    color:white;
+.benefits{
+  margin-top:20px;
+  padding-top:18px;
+  border-top:1px solid #2d3947
 }
 
-.message{
-    margin-top:10px;
-
-    font-size:11px;
-
-    line-height:1.5;
+.benefits div{
+  margin:11px 0;
+  color:#d7dce3
 }
 
-/* ==============================
-   BENEFITS
-============================== */
-
-.benefit{
-    display:grid;
-
-    grid-template-columns:42px 1fr;
-
-    gap:10px;
-
-    align-items:center;
-
-    margin:13px 0;
+.agebox{
+  margin-top:18px;
+  border:1px solid #ff2b88;
+  border-radius:9px;
+  padding:13px;
+  text-align:center
 }
-
-.benefit-icon{
-    width:40px;
-    height:40px;
-
-    display:grid;
-
-    place-items:center;
-
-    border:1px solid #ff197f;
-
-    border-radius:8px;
-
-    color:#ff197f;
-
-    font-size:20px;
-}
-
-.benefit b{
-    font-size:13px;
-}
-
-.benefit small{
-    display:block;
-
-    margin-top:3px;
-
-    color:#c4ccd2;
-}
-
-/* ==============================
-   LOGIN
-============================== */
-
-#loginPanel{
-    display:none;
-}
-
-/* ==============================
-   FOOTER
-============================== */
 
 footer{
-    display:grid;
-
-    grid-template-columns:
-    1.3fr 1fr 1fr 1fr 1.2fr;
-
-    gap:20px;
-
-    padding:28px 4%;
-
-    border-top:1px solid #263845;
-
-    color:#b7c1c8;
-
-    font-size:11px;
+  padding:35px 5%;
+  border-top:1px solid #1f2b39;
+  display:flex;
+  justify-content:space-between;
+  color:#aeb7c4
 }
 
-footer b{
-    color:white;
+footer strong{color:#fff}
+
+.demo-note{
+  text-align:center;
+  color:#7f8a98;
+  font-size:11px;
+  padding:0 15px 25px
 }
 
-footer span{
-    display:block;
-
-    margin:7px 0;
+@media(max-width:1000px){
+  .page{grid-template-columns:1fr}
+  .main{border:0}
+  .side{padding:18px}
+  .auth{position:static}
+  nav{display:none}
+  .grid{grid-template-columns:repeat(2,1fr)}
 }
 
-.age-box{
-    padding:15px;
-
-    border:1px solid #304354;
-
-    border-radius:10px;
-
-    text-align:center;
+@media(max-width:550px){
+  h1{font-size:36px}
+  .grid{grid-template-columns:1fr 1fr}
+  .photo{height:135px}
+  header{padding:0 4%}
+  .topbtn.login{display:none}
 }
-
-.age-box strong{
-    color:#ff197f;
-
-    font-size:21px;
-}
-
-/* ==============================
-   MOBILE
-============================== */
-
-@media(max-width:1050px){
-
-    .page{
-        grid-template-columns:1fr;
-    }
-
-    .left{
-        border-right:0;
-    }
-
-    .right{
-        border-top:3px solid #ff197f;
-    }
-
-    nav{
-        display:none;
-    }
-
-    .profiles{
-        grid-template-columns:repeat(3,1fr);
-    }
-}
-
-@media(max-width:650px){
-
-    header{
-        gap:8px;
-    }
-
-    .hero{
-        grid-template-columns:1fr;
-    }
-
-    .hero-content h1{
-        font-size:36px;
-    }
-
-    .hero-photo{
-        min-height:300px;
-    }
-
-    .profiles{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    footer{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
 </style>
 </head>
 
@@ -755,1296 +355,368 @@ footer span{
 
 <div class="page">
 
-<!-- ==============================
-LEFT SIDE
-============================== -->
-
-<main class="left">
+<div class="main">
 
 <header>
 
 <div class="logo">
-👻 Snap<span class="pink">MeetUp</span>
+👻 Snap<span>MeetUp</span>
 </div>
 
 <nav>
-
-<a class="active" href="#">
-Home
-</a>
-
-<a href="#profiles">
-Explore
-</a>
-
-<a href="#profiles">
-Girls
-</a>
-
-<a href="#profiles">
-Guys
-</a>
-
-<a href="#profiles">
-Couples
-</a>
-
-<a href="#profiles">
-Top 100
-</a>
-
+<a href="#">Home</a>
+<a href="#featured">Explore</a>
+<a href="#featured">Girls</a>
+<a href="#">Guys</a>
+<a href="#">Couples</a>
+<a href="#">Top 100</a>
 </nav>
 
-<div class="space"></div>
-
-<button class="top-button">
-⌕
-</button>
+<button class="topbtn login">Login</button>
 
 <button
-class="top-button"
-onclick="showLogin()">
-
-Login
-
-</button>
-
-<button
-class="top-button register"
-onclick="showRegister()">
-
+class="topbtn"
+onclick="document.getElementById('register').scrollIntoView()">
 Register
-
 </button>
 
 </header>
 
-<!-- ==============================
-HERO
-============================== -->
-
-<section class="hero">
+<div class="hero">
 
 <div class="hero-content">
 
 <h1>
-
-Meet New Friends
-
-<br>
-
-on
-
-<span class="pink">
-Snapchat
-</span>
-
+Meet New Friends<br>
+on <span>Snapchat</span>
 </h1>
 
-<p>
-
-Real people. Real Snapchat usernames.
-
-<br>
-
+<p class="sub">
+Real people. Real Snapchat usernames.<br>
 Find, connect and make new friends around the world.
-
 </p>
 
 <div class="search">
 
 <input
-id="searchInput"
+id="search"
 placeholder="Search by username, age or country...">
 
-<button
-onclick="searchProfiles()">
-
-⌕
-
-</button>
+<button onclick="searchCards()">⌕</button>
 
 </div>
 
 <div class="filters">
 
-<button class="filter active">
-Girls
-</button>
-
-<button class="filter">
-Guys
-</button>
-
-<button class="filter">
-Couples
-</button>
-
-<button class="filter">
-Age⌄
-</button>
-
-<button class="filter">
-Country⌄
-</button>
-
-<button class="filter">
-Online Now 🟢
-</button>
+<button class="active">Girls</button>
+<button>Guys</button>
+<button>Couples</button>
+<button>Age⌄</button>
+<button>Country⌄</button>
+<button>Online Now ●</button>
 
 </div>
 
 </div>
-
-<div class="hero-photo">
-
-<div class="hero-person"></div>
-
-<div class="neon">
-
-Add
-
-<br>
-
-Chat
-
-<br>
-
-Connect
-
-<br>
-
-Have Fun
-
-<br>
-
-♡ 👻
-
 </div>
 
-</div>
+<section id="featured">
 
-</section>
-
-<!-- ==============================
-FEATURED
-============================== -->
-
-<section
-class="section"
-id="profiles">
-
-<div class="section-heading">
+<div class="title">
 
 <h2>
-
-⭐ Featured Profiles
-
+★ <span class="pink">Featured</span> Profiles
 </h2>
 
-<button class="top-button">
-
-View All
-
-</button>
+<a href="#">View All</a>
 
 </div>
 
-<div class="profiles">
+<div class="grid">
 
-<!-- AYESHA -->
-
-<article
-class="profile profile-card"
-data-search="ayesha 21 pakistan">
-
-<span class="featured">
-Featured
-</span>
-
-<span class="online"></span>
-
-<div class="profile-photo girl1"></div>
-
-<div class="profile-info">
-
-<h3>
-Ayesha
-</h3>
-
-<p>
-🇵🇰 21, Pakistan
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
+<article class="card">
+<div class="photo p0">
+<b>Featured</b>
+<i></i>
 </div>
-
+<h3>Ayesha</h3>
+<small>21, Pakistan</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
 </article>
 
-<!-- EMILY -->
-
-<article
-class="profile profile-card"
-data-search="emily 19 usa">
-
-<span class="featured">
-Featured
-</span>
-
-<span class="online"></span>
-
-<div class="profile-photo girl2"></div>
-
-<div class="profile-info">
-
-<h3>
-Emily
-</h3>
-
-<p>
-🇺🇸 19, USA
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
+<article class="card">
+<div class="photo p1">
+<b>Featured</b>
+<i></i>
 </div>
-
+<h3>Emily</h3>
+<small>19, USA</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
 </article>
 
-<!-- SARA -->
-
-<article
-class="profile profile-card"
-data-search="sara 22 uk">
-
-<span class="featured">
-Featured
-</span>
-
-<span class="online"></span>
-
-<div class="profile-photo girl3"></div>
-
-<div class="profile-info">
-
-<h3>
-Sara
-</h3>
-
-<p>
-🇬🇧 22, UK
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
+<article class="card">
+<div class="photo p2">
+<b>Featured</b>
+<i></i>
 </div>
-
+<h3>Sara</h3>
+<small>22, UK</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
 </article>
 
-<!-- NIMRA -->
-
-<article
-class="profile profile-card"
-data-search="nimra 20 canada">
-
-<span class="featured">
-Featured
-</span>
-
-<span class="online"></span>
-
-<div class="profile-photo girl4"></div>
-
-<div class="profile-info">
-
-<h3>
-Nimra
-</h3>
-
-<p>
-🇨🇦 20, Canada
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
+<article class="card">
+<div class="photo p3">
+<b>Featured</b>
+<i></i>
 </div>
-
+<h3>Nimra</h3>
+<small>20, Canada</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
 </article>
 
-<!-- ALINA -->
-
-<article
-class="profile profile-card"
-data-search="alina 23 australia">
-
-<span class="featured">
-Featured
-</span>
-
-<span class="online"></span>
-
-<div class="profile-photo girl5"></div>
-
-<div class="profile-info">
-
-<h3>
-Alina
-</h3>
-
-<p>
-🇦🇺 23, Australia
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
+<article class="card">
+<div class="photo p4">
+<b>Featured</b>
+<i></i>
 </div>
-
+<h3>Alina</h3>
+<small>23, Australia</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
 </article>
 
 </div>
-
-<!-- ==============================
-LATEST
-============================== -->
-
-<div
-class="section-heading"
-style="margin-top:27px">
-
-<h2>
-
-🔥 Latest Profiles
-
-</h2>
-
-<button class="top-button">
-
-View All
-
-</button>
-
-</div>
-
-<div class="profiles">
-
-<!-- MAYA -->
-
-<article
-class="profile profile-card"
-data-search="maya 18 usa">
-
-<span class="online"></span>
-
-<div class="profile-photo girl6"></div>
-
-<div class="profile-info">
-
-<h3>
-Maya
-</h3>
-
-<p>
-🇺🇸 18, USA
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
-</div>
-
-</article>
-
-<!-- ZARA -->
-
-<article
-class="profile profile-card"
-data-search="zara 20 uk">
-
-<span class="online"></span>
-
-<div class="profile-photo girl7"></div>
-
-<div class="profile-info">
-
-<h3>
-Zara
-</h3>
-
-<p>
-🇬🇧 20, UK
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
-</div>
-
-</article>
-
-<!-- KYLIE -->
-
-<article
-class="profile profile-card"
-data-search="kylie 19 canada">
-
-<span class="online"></span>
-
-<div class="profile-photo girl8"></div>
-
-<div class="profile-info">
-
-<h3>
-Kylie
-</h3>
-
-<p>
-🇨🇦 19, Canada
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
-</div>
-
-</article>
-
-<!-- TANIA -->
-
-<article
-class="profile profile-card"
-data-search="tania 22 germany">
-
-<span class="online"></span>
-
-<div class="profile-photo girl9"></div>
-
-<div class="profile-info">
-
-<h3>
-Tania
-</h3>
-
-<p>
-🇩🇪 22, Germany
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
-</div>
-
-</article>
-
-<!-- SOPHIE -->
-
-<article
-class="profile profile-card"
-data-search="sophie 21 australia">
-
-<span class="online"></span>
-
-<div class="profile-photo girl10"></div>
-
-<div class="profile-info">
-
-<h3>
-Sophie
-</h3>
-
-<p>
-🇦🇺 21, Australia
-</p>
-
-<button
-class="snap-button"
-onclick="demoProfile()">
-
-👻 Add on Snapchat
-
-</button>
-
-</div>
-
-</article>
-
-</div>
-
-<p style="
-text-align:center;
-color:#81919c;
-font-size:10px;
-margin-top:18px;
-">
-
-Preview profiles are fictional demo profiles.
-
-</p>
-
 </section>
 
-<!-- ==============================
-FOOTER
-============================== -->
+<section>
+
+<div class="title">
+
+<h2>🔥 Latest Profiles</h2>
+
+<a href="#">View All</a>
+
+</div>
+
+<div class="grid">
+
+<article class="card">
+<div class="photo p5"><i></i></div>
+<h3>Maya</h3>
+<small>18, USA</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
+</article>
+
+<article class="card">
+<div class="photo p6"><i></i></div>
+<h3>Zara</h3>
+<small>20, UK</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
+</article>
+
+<article class="card">
+<div class="photo p7"><i></i></div>
+<h3>Kylie</h3>
+<small>19, Canada</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
+</article>
+
+<article class="card">
+<div class="photo p8"><i></i></div>
+<h3>Tania</h3>
+<small>22, Germany</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
+</article>
+
+<article class="card">
+<div class="photo p9"><i></i></div>
+<h3>Sophie</h3>
+<small>21, Australia</small>
+<button onclick="demo()">👻 Add on Snapchat</button>
+</article>
+
+</div>
+</section>
 
 <footer>
 
 <div>
-
 <div class="logo">
-
-👻 Snap<span class="pink">MeetUp</span>
-
+👻 Snap<span>MeetUp</span>
 </div>
-
-<span>
-Meet • Connect • Snap
-</span>
-
+<p>Meet • Connect • Snap</p>
 </div>
 
 <div>
-
-<b>
-Quick Links
-</b>
-
-<span>Home</span>
-<span>Explore</span>
-<span>Top 100</span>
-<span>Contact</span>
-
+<strong>Quick Links</strong>
+<p>Home · Explore · Top 100</p>
 </div>
 
 <div>
-
-<b>
-Categories
-</b>
-
-<span>Girls</span>
-<span>Guys</span>
-<span>Couples</span>
-<span>Online Now</span>
-
-</div>
-
-<div>
-
-<b>
-Support
-</b>
-
-<span>FAQ</span>
-<span>Terms of Service</span>
-<span>Privacy Policy</span>
-<span>DMCA</span>
-
-</div>
-
-<div class="age-box">
-
-<strong>
-18+
-</strong>
-
-<br><br>
-
-This website is for adults only.
-
-<br>
-
-You must be 18+ to use SnapMeetUp.
-
+<strong>Support</strong>
+<p>FAQ · Terms · Privacy · 18+ Only</p>
 </div>
 
 </footer>
 
-</main>
+<div class="demo-note">
+Preview profiles are fictional AI-generated adult demo profiles.
+They are not real Snapchat accounts.
+</div>
 
-<!-- ==============================
-RIGHT SIDE
-============================== -->
+</div>
 
-<aside class="right">
+<aside class="side" id="register">
+
+<div class="auth">
 
 <div class="tabs">
-
-<button
-id="loginTab"
-onclick="showLogin()">
-
-Login
-
-</button>
-
-<button
-id="registerTab"
-class="active"
-onclick="showRegister()">
-
-Register
-
-</button>
-
+<button>Login</button>
+<button class="on">Register</button>
 </div>
 
-<!-- REGISTER -->
-
-<div
-class="panel"
-id="registerPanel">
-
-<h2>
-Create Your Account
-</h2>
+<h2>Create Your Account</h2>
 
 <p>
-
-Join SnapMeetUp and start meeting new friends on Snapchat today!
-
+Join SnapMeetUp and add your own Snapchat profile.
 </p>
 
-<input
-class="field"
-id="fullName"
-placeholder="👤 Full Name">
+<form onsubmit="register(event)">
+
+<label>Full Name</label>
+<input required placeholder="Your name">
+
+<label>Email Address</label>
 
 <input
-class="field"
-id="registerEmail"
+id="email"
 type="email"
-placeholder="✉ Email Address">
+required
+placeholder="you@gmail.com">
 
-<div class="allowed">
+<div class="hint">
+Allowed: Gmail, Googlemail, Yahoo, Hotmail, Outlook
+</div>
 
-Allowed email providers:
+<label>Password</label>
 
-<br>
+<input
+type="password"
+minlength="6"
+required
+placeholder="••••••••">
 
-Gmail • Googlemail • Yahoo • Hotmail • Outlook
+<label>Confirm Password</label>
+
+<input
+type="password"
+minlength="6"
+required
+placeholder="••••••••">
+
+<div class="check">
+
+<input
+id="age"
+type="checkbox"
+required>
+
+<span>
+I confirm I am 18+ and agree to the Terms & Privacy Policy.
+</span>
 
 </div>
 
-<input
-class="field"
-id="registerPassword"
-type="password"
-placeholder="🔒 Password">
-
-<input
-class="field"
-id="confirmPassword"
-type="password"
-placeholder="🔒 Confirm Password">
-
-<label class="allowed">
-
-<input
-id="adultCheck"
-type="checkbox">
-
-I confirm that I am 18+
-
-</label>
-
-<button
-class="create"
-onclick="registerUser()">
-
+<button class="create">
 Create Account
-
 </button>
 
-<button
-class="google"
-onclick="googleSignup()">
+</form>
 
-🌐 Sign up with Google
+<div class="benefits">
 
-</button>
+<h3>Why Join SnapMeetUp?</h3>
 
-<div
-class="message"
-id="registerMessage">
+<div>✓ Add your Snapchat profile</div>
+<div>✓ Discover new people worldwide</div>
+<div>✓ Premium social links coming later</div>
 
 </div>
 
-<p style="text-align:center">
+<div class="agebox">
 
-Already have an account?
-
-<span
-class="pink"
-style="cursor:pointer"
-onclick="showLogin()">
-
-Login
-
-</span>
-
-</p>
-
-</div>
-
-<!-- LOGIN -->
-
-<div
-class="panel"
-id="loginPanel">
-
-<h2>
-Welcome Back
-</h2>
+<b>🔞 18+ Only</b>
 
 <p>
-
-Login to your SnapMeetUp account.
-
-</p>
-
-<input
-class="field"
-id="loginEmail"
-type="email"
-placeholder="✉ Email Address">
-
-<input
-class="field"
-id="loginPassword"
-type="password"
-placeholder="🔒 Password">
-
-<button
-class="create"
-onclick="loginUser()">
-
-Login
-
-</button>
-
-<div
-class="message"
-id="loginMessage">
-
-</div>
-
-<p style="text-align:center">
-
-Don't have an account?
-
-<span
-class="pink"
-style="cursor:pointer"
-onclick="showRegister()">
-
-Register
-
-</span>
-
-</p>
-
-</div>
-
-<!-- BENEFITS -->
-
-<div class="panel">
-
-<h2>
-Why Join SnapMeetUp?
-</h2>
-
-<div class="benefit">
-
-<div class="benefit-icon">
-♙
-</div>
-
-<div>
-
-<b>
-Real People
-</b>
-
-<small>
-Meet Snapchat users
-</small>
-
-</div>
-
-</div>
-
-<div class="benefit">
-
-<div class="benefit-icon">
-◎
-</div>
-
-<div>
-
-<b>
-Global Friends
-</b>
-
-<small>
-Connect with people worldwide
-</small>
-
-</div>
-
-</div>
-
-<div class="benefit">
-
-<div class="benefit-icon">
-ϟ
-</div>
-
-<div>
-
-<b>
-Easy to Use
-</b>
-
-<small>
-Simple and fast registration
-</small>
-
-</div>
-
-</div>
-
-<div class="benefit">
-
-<div class="benefit-icon">
-♡
-</div>
-
-<div>
-
-<b>
-Free Snapchat Profile
-</b>
-
-<small>
-Create your profile and start connecting
-</small>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="panel">
-
-<h2>
-🛡️ 18+ Only
-</h2>
-
-<p>
-
 This website is for adults only.
-
-You must be 18+ to use SnapMeetUp.
-
 </p>
 
 </div>
 
+</div>
 </aside>
 
 </div>
 
 <script>
 
-/* =====================================
-ALLOWED EMAIL DOMAINS
-===================================== */
+function demo(){
+ alert(
+ "Demo AI profile — no real Snapchat account is connected."
+ );
+}
 
-const allowedDomains = [
+function register(e){
 
-    "gmail.com",
+ e.preventDefault();
 
-    "googlemail.com",
+ let email =
+ document.getElementById("email").value.toLowerCase();
 
-    "yahoo.com",
+ let domain =
+ email.split("@")[1];
 
-    "hotmail.com",
+ let allowed = [
+ "gmail.com",
+ "googlemail.com",
+ "yahoo.com",
+ "hotmail.com",
+ "outlook.com"
+ ];
 
-    "outlook.com"
+ if(!allowed.includes(domain)){
 
-];
+  alert(
+  "Please use Gmail, Yahoo, Hotmail or Outlook."
+  );
 
-/* =====================================
-EMAIL CHECK
-===================================== */
+  return;
+ }
 
-function validEmail(email){
-
-    const parts = email
-    .trim()
-    .toLowerCase()
-    .split("@");
-
-    if(parts.length !== 2){
-
-        return false;
-
-    }
-
-    return allowedDomains.includes(parts[1]);
+ alert(
+ "Registration UI is ready. Real email verification will work after the backend is connected."
+ );
 
 }
 
-/* =====================================
-REGISTER TAB
-===================================== */
-
-function showRegister(){
-
-    document
-    .getElementById("registerPanel")
-    .style.display="block";
-
-    document
-    .getElementById("loginPanel")
-    .style.display="none";
-
-    document
-    .getElementById("registerTab")
-    .classList.add("active");
-
-    document
-    .getElementById("loginTab")
-    .classList.remove("active");
-
-}
-
-/* =====================================
-LOGIN TAB
-===================================== */
-
-function showLogin(){
-
-    document
-    .getElementById("registerPanel")
-    .style.display="none";
-
-    document
-    .getElementById("loginPanel")
-    .style.display="block";
-
-    document
-    .getElementById("loginTab")
-    .classList.add("active");
-
-    document
-    .getElementById("registerTab")
-    .classList.remove("active");
-
-}
-
-/* =====================================
-REGISTER
-===================================== */
-
-function registerUser(){
-
-    const name =
-    document
-    .getElementById("fullName")
-    .value
-    .trim();
-
-    const email =
-    document
-    .getElementById("registerEmail")
-    .value
-    .trim()
-    .toLowerCase();
-
-    const password =
-    document
-    .getElementById("registerPassword")
-    .value;
-
-    const confirmPassword =
-    document
-    .getElementById("confirmPassword")
-    .value;
-
-    const adult =
-    document
-    .getElementById("adultCheck")
-    .checked;
-
-    const message =
-    document
-    .getElementById("registerMessage");
-
-    message.style.color="#ff6aa8";
-
-    if(name.length < 2){
-
-        message.innerText=
-        "Please enter your full name.";
-
-        return;
-
-    }
-
-    if(!validEmail(email)){
-
-        message.innerText=
-        "Only Gmail, Googlemail, Yahoo, Hotmail or Outlook email addresses are allowed.";
-
-        return;
-
-    }
-
-    if(password.length < 8){
-
-        message.innerText=
-        "Password must contain at least 8 characters.";
-
-        return;
-
-    }
-
-    if(password !== confirmPassword){
-
-        message.innerText=
-        "Passwords do not match.";
-
-        return;
-
-    }
-
-    if(!adult){
-
-        message.innerText=
-        "You must confirm that you are 18+.";
-
-        return;
-
-    }
-
-    message.style.color="#28e783";
-
-    message.innerText=
-    "✓ Registration details accepted. Real verification email will work after authentication backend is connected.";
-
-}
-
-/* =====================================
-LOGIN
-===================================== */
-
-function loginUser(){
-
-    const email =
-    document
-    .getElementById("loginEmail")
-    .value
-    .trim()
-    .toLowerCase();
-
-    const password =
-    document
-    .getElementById("loginPassword")
-    .value;
-
-    const message =
-    document
-    .getElementById("loginMessage");
-
-    message.style.color="#ff6aa8";
-
-    if(!validEmail(email)){
-
-        message.innerText=
-        "Please enter an allowed email address.";
-
-        return;
-
-    }
-
-    if(password.length < 8){
-
-        message.innerText=
-        "Please enter your password.";
-
-        return;
-
-    }
-
-    message.style.color="#28e783";
-
-    message.innerText=
-    "Login form ready. Authentication backend will be connected next.";
-
-}
-
-/* =====================================
-GOOGLE
-===================================== */
-
-function googleSignup(){
-
-    const message =
-    document
-    .getElementById("registerMessage");
-
-    message.style.color="#28e783";
-
-    message.innerText=
-    "Google signup is ready for backend authentication.";
-
-}
-
-/* =====================================
-SEARCH
-===================================== */
-
-function searchProfiles(){
-
-    const search =
-    document
-    .getElementById("searchInput")
-    .value
-    .trim()
-    .toLowerCase();
-
-    document
-    .querySelectorAll(".profile-card")
-    .forEach(function(card){
-
-        const text =
-        card.dataset.search
-        .toLowerCase();
-
-        if(text.includes(search)){
-
-            card.style.display="block";
-
-        }
-
-        else{
-
-            card.style.display="none";
-
-        }
-
-    });
-
-}
-
-/* ENTER SEARCH */
-
-document
-.getElementById("searchInput")
-.addEventListener(
-"keyup",
-function(event){
-
-    if(event.key === "Enter"){
-
-        searchProfiles();
-
-    }
-
-});
-
-/* =====================================
-FILTER BUTTONS
-===================================== */
-
-document
-.querySelectorAll(".filter")
-.forEach(function(button){
-
-    button.addEventListener(
-    "click",
-    function(){
-
-        document
-        .querySelectorAll(".filter")
-        .forEach(function(other){
-
-            other
-            .classList
-            .remove("active");
-
-        });
-
-        button
-        .classList
-        .add("active");
-
-    });
-
-});
-
-/* =====================================
-DEMO SNAPCHAT BUTTON
-===================================== */
-
-function demoProfile(){
-
-    alert(
-    "This is a fictional demo profile. Real Snapchat usernames will appear when users create their profiles."
-    );
+function searchCards(){
+
+ let q =
+ document.getElementById("search")
+ .value
+ .toLowerCase();
+
+ document
+ .querySelectorAll(".card")
+ .forEach(card=>{
+
+   card.style.display =
+   card.innerText
+   .toLowerCase()
+   .includes(q)
+   ? ""
+   : "none";
+
+ });
 
 }
 
