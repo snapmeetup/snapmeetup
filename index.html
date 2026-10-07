@@ -74,11 +74,25 @@ textarea.field{height:78px;padding-top:10px;resize:vertical} .full{grid-column:1
 
 .card .pic img {
   width: 100% !important;
-  height: calc(100% + 30px) !important;
+  height: calc(100% + 46px) !important;
   object-fit: cover !important;
   object-position: center center !important;
   display: block !important;
-  transform: translateY(-30px) !important;
+  transform: translateY(-46px) !important;
+}
+
+
+/* crop only the baked-in top status strip from Profile View portrait */
+.profilepic {
+  overflow: hidden !important;
+}
+.profilepic img {
+  width: 100% !important;
+  height: calc(100% + 42px) !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  transform: translateY(-42px) !important;
 }
 
 /* exactly one clean Featured badge */
