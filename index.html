@@ -53,6 +53,48 @@ textarea.field{height:78px;padding-top:10px;resize:vertical} .full{grid-column:1
 .flag-au:after{content:"★";position:absolute;color:#fff;font-size:7px;right:2px;top:1px}
 .flag-de{background:linear-gradient(#000 0 33%,#dd0000 33% 66%,#ffce00 66%)}
 
+
+/* === Featured-card visual fix only (2026-10-07) === */
+.section .card .pic{position:relative;overflow:hidden}
+.section .card .pic .badge{
+  position:absolute!important;
+  left:8px!important;
+  top:8px!important;
+  z-index:10!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  width:auto!important;
+  height:22px!important;
+  padding:0 9px!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:999px!important;
+  background:#ff2482!important;
+  color:#fff!important;
+  font:700 11px/22px Arial,Helvetica,sans-serif!important;
+  letter-spacing:0!important;
+  text-shadow:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+  opacity:1!important;
+  transform:none!important;
+}
+.section .card .pic .online{
+  position:absolute!important;
+  right:8px!important;
+  top:8px!important;
+  z-index:11!important;
+}
+/* Keep profile photos sharp; do not apply blur/scaling filters. */
+.section .card .pic img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  filter:none!important;
+  opacity:1!important;
+}
+
 </style>
 </head>
 <body>
