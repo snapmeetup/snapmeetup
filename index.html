@@ -3,639 +3,1650 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SnapMeetUp - Meet & Connect</title>
+
+<title>SnapMeetUp — Meet New Friends</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-  font-family:Arial, sans-serif;
-  background:#070b16;
-  color:white;
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#07101a;
+    color:#fff;
 }
 
 a{
-  text-decoration:none;
-  color:inherit;
+    color:inherit;
+    text-decoration:none;
 }
 
-nav{
-  height:76px;
-  display:flex;
-  align-items:center;
-  gap:28px;
-  padding:0 6%;
-  border-bottom:1px solid #24283b;
-  background:#080d18;
+button,
+input,
+select,
+textarea{
+    font:inherit;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    height:70px;
+    display:flex;
+    align-items:center;
+    padding:0 4%;
+    gap:30px;
+
+    background:#06101b;
+
+    border-bottom:1px solid #172433;
+
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .logo{
-  font-size:24px;
-  font-weight:800;
+    font-size:24px;
+    font-weight:900;
 }
 
-.pink{
-  color:#ff2f8b;
+.logo span{
+    color:#ff2c88;
 }
 
-.navlinks{
-  display:flex;
-  gap:24px;
-  color:#c6c9d4;
-  font-size:14px;
+nav{
+    display:flex;
+    gap:25px;
 }
 
-.spacer{
-  flex:1;
+nav a{
+    font-size:13px;
+    color:#e3e6eb;
 }
 
-.btn{
-  border:0;
-  border-radius:24px;
-  padding:12px 22px;
-  font-weight:700;
-  cursor:pointer;
+nav a:first-child{
+    color:#ff2c88;
 }
 
-.primary{
-  background:#ff2f8b;
-  color:white;
+.space{
+    flex:1;
 }
+
+.header-btn{
+    border:1px solid #344456;
+    background:#0b1623;
+    color:#fff;
+
+    padding:10px 18px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+}
+
+.submit-btn{
+    background:#ff2c88;
+    border-color:#ff2c88;
+    font-weight:bold;
+}
+
+/* ================= HERO ================= */
 
 .hero{
-  min-height:510px;
-  padding:72px 7%;
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:55px;
-  align-items:center;
-  background:
-  radial-gradient(circle at 80% 25%,#32122d 0,#111023 30%,#070b16 62%);
+
+    min-height:510px;
+
+    padding:55px 4%;
+
+    display:grid;
+
+    grid-template-columns:1.05fr .95fr;
+
+    align-items:center;
+
+    gap:30px;
+
+    background:
+    radial-gradient(
+        circle at 80% 20%,
+        #4b2637 0,
+        #17212c 30%,
+        #07101a 68%
+    );
 }
 
-.badge{
-  display:inline-block;
-  border:1px solid #8d275a;
-  border-radius:20px;
-  padding:8px 13px;
-  color:#ff76b1;
-  font-size:13px;
+.hero h1{
+
+    font-size:54px;
+
+    line-height:1.07;
+
+    margin:0 0 16px;
 }
 
-h1{
-  font-size:58px;
-  line-height:1.02;
-  margin:18px 0 15px;
+.hero h1 span{
+    color:#ff3a92;
 }
 
-.lead{
-  color:#b9bfd0;
-  font-size:17px;
-  max-width:560px;
-  line-height:1.5;
+.hero-text{
+
+    color:#d3d8df;
+
+    line-height:1.6;
+
+    max-width:540px;
 }
+
+/* ================= SEARCH ================= */
 
 .search{
-  display:flex;
-  margin-top:26px;
-  max-width:610px;
+
+    display:flex;
+
+    max-width:570px;
+
+    margin-top:25px;
 }
 
 .search input{
-  flex:1;
-  background:#101827;
-  border:1px solid #2a3548;
-  color:white;
-  padding:15px;
-  border-radius:13px 0 0 13px;
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    padding:15px;
+
+    border-radius:12px 0 0 12px;
 }
 
 .search button{
-  width:58px;
-  border:0;
-  background:#ff2f8b;
-  color:white;
-  border-radius:0 13px 13px 0;
-  font-size:20px;
+
+    width:60px;
+
+    border:none;
+
+    color:#fff;
+
+    background:#ff2c88;
+
+    border-radius:0 12px 12px 0;
+
+    font-size:20px;
+
+    cursor:pointer;
 }
+
+/* ================= FILTER ================= */
 
 .filters{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin-top:14px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:18px;
 }
 
-.chip{
-  padding:9px 17px;
-  border:1px solid #33405a;
-  border-radius:20px;
-  background:#101827;
-  color:#d9ddea;
-  cursor:pointer;
+.filter{
+
+    padding:10px 21px;
+
+    border-radius:25px;
+
+    border:1px solid #354456;
+
+    background:#111d2b;
+
+    color:#fff;
+
+    cursor:pointer;
 }
 
-.chip.active{
-  background:#ff2f8b;
-  border-color:#ff2f8b;
+.filter.active{
+
+    background:#ff2c88;
+
+    border-color:#ff2c88;
 }
 
-.hero-card{
-  height:355px;
-  border:1px solid #42324f;
-  border-radius:28px;
-  overflow:hidden;
-  position:relative;
-  background:linear-gradient(145deg,#25152d,#12182b);
-}
+/* ================= HERO IMAGE ================= */
 
 .hero-photo{
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:115px;
+
+    height:390px;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    linear-gradient(
+        140deg,
+        #553140,
+        #172532
+    );
+
+    box-shadow:
+    0 25px 70px rgba(0,0,0,.5);
 }
 
-.hero-overlay{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  padding:24px;
-  background:linear-gradient(transparent,#080b15 80%);
+.demo-person{
+
+    font-size:170px;
+
+    filter:
+    drop-shadow(
+        0 15px 18px rgba(0,0,0,.6)
+    );
 }
 
-.online{
-  color:#4ee59a;
+.neon-text{
+
+    position:absolute;
+
+    right:30px;
+
+    top:45px;
+
+    color:#ff86bd;
+
+    font-size:29px;
+
+    line-height:1.35;
+
+    transform:rotate(-7deg);
+
+    text-shadow:
+
+    0 0 8px #ff2c88,
+    0 0 18px #ff2c88;
 }
 
-section{
-  padding:55px 7%;
+.neon-icon{
+
+    font-size:60px;
 }
 
-.titlebar{
-  display:flex;
-  align-items:center;
-  margin-bottom:22px;
+/* ================= SECTION ================= */
+
+.section{
+
+    padding:38px 4%;
 }
 
-.titlebar h2{
-  font-size:25px;
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    margin-bottom:20px;
 }
 
-.titlebar span{
-  margin-left:auto;
-  color:#8d98b5;
+.section-title h2{
+
+    margin:0;
+
+    font-size:24px;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
+.view{
+
+    margin-left:auto;
+
+    background:#0b1623;
+
+    color:white;
+
+    border:1px solid #344456;
+
+    border-radius:20px;
+
+    padding:8px 17px;
+
+    cursor:pointer;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:16px;
 }
 
 .card{
-  background:#101827;
-  border:1px solid #243047;
-  border-radius:18px;
-  overflow:hidden;
-  transition:.2s;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:14px;
+
+    border:1px solid #27394b;
+
+    background:#0c1825;
+
+    transition:.2s;
 }
 
 .card:hover{
-  transform:translateY(-4px);
-  border-color:#ff2f8b;
+
+    transform:
+    translateY(-5px);
+
+    border-color:#ff2c88;
 }
 
-.photo{
-  height:220px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:78px;
-  background:linear-gradient(145deg,#25344a,#172033);
+.profile-photo{
+
+    height:210px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:82px;
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #45373a,
+        #172431
+    );
 }
 
-.info{
-  padding:17px;
+.featured{
+
+    position:absolute;
+
+    top:10px;
+
+    left:9px;
+
+    background:#ff2c88;
+
+    border-radius:15px;
+
+    padding:5px 9px;
+
+    font-size:10px;
+
+    font-weight:bold;
 }
 
-.name{
-  font-size:18px;
-  font-weight:800;
+.online{
+
+    position:absolute;
+
+    right:10px;
+
+    top:10px;
+
+    width:13px;
+
+    height:13px;
+
+    border-radius:50%;
+
+    background:#31e57c;
+
+    box-shadow:
+    0 0 8px #31e57c;
+}
+
+.card-info{
+
+    padding:12px;
+}
+
+.username{
+
+    font-weight:bold;
+
+    font-size:15px;
 }
 
 .meta{
-  font-size:13px;
-  color:#9ba6bd;
-  margin:7px 0;
+
+    color:#c5ccd5;
+
+    font-size:12px;
+
+    margin:6px 0 10px;
 }
 
-.bio{
-  color:#c7ccda;
-  font-size:14px;
-  min-height:36px;
+/* ================= SNAP BUTTON ================= */
+
+.snap-btn{
+
+    display:block;
+
+    text-align:center;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    background:#ffe322;
+
+    color:#101010;
+
+    font-size:13px;
+
+    font-weight:900;
 }
 
-.snap{
-  display:block;
-  text-align:center;
-  background:#ffd927;
-  color:#111;
-  padding:11px;
-  border-radius:10px;
-  font-weight:800;
-  margin-top:14px;
+/* ================= LATEST ================= */
+
+.latest-title{
+
+    margin-top:32px;
 }
 
-.locked{
-  display:flex;
-  justify-content:space-between;
-  margin-top:11px;
-  color:#8e97ad;
-  font-size:12px;
-}
-
-.premium{
-  margin-top:55px;
-  padding:35px;
-  border:1px solid #663255;
-  border-radius:22px;
-  background:linear-gradient(135deg,#201226,#10182a);
-  text-align:center;
-}
+/* ================= FOOTER ================= */
 
 footer{
-  text-align:center;
-  color:#707b95;
-  padding:35px;
-  border-top:1px solid #20283a;
-  font-size:13px;
+
+    display:grid;
+
+    grid-template-columns:
+    1.4fr repeat(3,1fr) 1.2fr;
+
+    gap:30px;
+
+    padding:45px 4%;
+
+    border-top:
+    1px solid #1d2b3b;
+
+    margin-top:30px;
 }
+
+footer h4{
+
+    margin:0 0 13px;
+}
+
+footer a,
+footer p{
+
+    display:block;
+
+    color:#aeb9c7;
+
+    font-size:13px;
+
+    margin:8px 0;
+}
+
+.age-box{
+
+    border:
+    1px solid #26384a;
+
+    border-radius:14px;
+
+    padding:20px;
+
+    text-align:center;
+}
+
+.age{
+
+    display:inline-block;
+
+    border:
+    2px solid #ff2c88;
+
+    color:#ff65a9;
+
+    border-radius:50%;
+
+    padding:8px;
+
+    font-weight:bold;
+}
+
+/* ================= SUBMIT PROFILE ================= */
 
 .modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#000b;
-  z-index:10;
-  align-items:center;
-  justify-content:center;
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    rgba(0,0,0,.85);
+
+    z-index:999;
+
+    align-items:center;
+
+    justify-content:center;
 }
 
-.modalbox{
-  width:min(480px,92%);
-  background:#101827;
-  border:1px solid #39445c;
-  border-radius:20px;
-  padding:25px;
-}
+.modal-box{
 
-.modalbox input,
-.modalbox select,
-.modalbox textarea{
-  width:100%;
-  margin:6px 0;
-  padding:12px;
-  border-radius:9px;
-  border:1px solid #34405a;
-  background:#090f1c;
-  color:white;
+    width:min(650px,94%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:#091623;
+
+    border:
+    2px solid #ff2c88;
+
+    border-radius:16px;
+
+    padding:25px;
 }
 
 .close{
-  float:right;
-  cursor:pointer;
-  font-size:24px;
+
+    float:right;
+
+    font-size:27px;
+
+    cursor:pointer;
 }
 
-@media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-  }
+.form{
 
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-  }
+    display:grid;
 
-  .navlinks{
-    display:none;
-  }
+    grid-template-columns:
+    1fr 1fr;
 
-  h1{
-    font-size:45px;
-  }
+    gap:12px;
 }
 
-@media(max-width:520px){
-  .grid{
-    grid-template-columns:1fr;
-  }
+.form input,
+.form select,
+.form textarea{
+
+    padding:12px;
+
+    border-radius:7px;
+
+    border:
+    1px solid #34465a;
+
+    background:#0d1a28;
+
+    color:#fff;
 }
+
+.form textarea{
+
+    grid-column:1/-1;
+
+    min-height:100px;
+}
+
+.upload{
+
+    grid-column:1/-1;
+
+    border:
+    1px dashed #667487;
+
+    border-radius:8px;
+
+    padding:30px;
+
+    text-align:center;
+
+    color:#c7d0db;
+}
+
+.agree{
+
+    grid-column:1/-1;
+
+    font-size:12px;
+
+    color:#c5ccd5;
+}
+
+.submit-profile{
+
+    grid-column:1/-1;
+
+    padding:14px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:#ff2c88;
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1050px){
+
+    nav{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:650px){
+
+    .hero h1{
+        font-size:39px;
+    }
+
+    .cards{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    footer{
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+    .form{
+        grid-template-columns:1fr;
+    }
+
+    .form textarea,
+    .upload,
+    .agree,
+    .submit-profile{
+        grid-column:1;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<nav>
+
+<!-- HEADER -->
+
+<header>
 
 <div class="logo">
-👻 Snap<span class="pink">MeetUp</span>
+👻 Snap<span>MeetUp</span>
 </div>
 
-<div class="navlinks">
+<nav>
+
 <a href="#">Home</a>
-<a href="#profiles">Explore</a>
-<a href="#profiles">Girls</a>
-<a href="#profiles">Guys</a>
-<a href="#profiles">Couples</a>
-<a href="#premium">Premium</a>
-</div>
 
-<div class="spacer"></div>
+<a href="#profiles">
+Explore
+</a>
 
-<button class="btn primary" onclick="openForm()">
-Submit Profile
-</button>
+<a href="#profiles">
+Girls
+</a>
+
+<a href="#profiles">
+Guys
+</a>
+
+<a href="#profiles">
+Couples
+</a>
+
+<a href="#profiles">
+Top 100
+</a>
 
 </nav>
 
+<div class="space"></div>
 
-<div class="hero">
+<button class="header-btn">
+⌕
+</button>
+
+<button class="header-btn">
+Login
+</button>
+
+<button
+class="header-btn submit-btn"
+onclick="openForm()">
+
+Submit Profile
+
+</button>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
 
 <div>
 
-<span class="badge">
-🔞 Adults only • 18+
+<h1>
+
+Meet New Friends
+
+<br>
+
+on
+
+<span>
+Snapchat
 </span>
 
-<h1>
-Meet New Friends<br>
-on <span class="pink">Snapchat.</span>
 </h1>
 
-<p class="lead">
-Discover adult profiles, find new people and connect
-through the social platforms they choose to share.
+
+<p class="hero-text">
+
+Real people. Real Snapchat usernames.
+
+<br>
+
+Find, connect and make new friends
+around the world.
+
 </p>
+
 
 <div class="search">
 
 <input
 id="search"
-placeholder="Search username, country or bio...">
+placeholder="Search by username, age or country...">
 
-<button onclick="filterCards()">⌕</button>
+<button
+onclick="searchProfiles()">
+
+⌕
+
+</button>
 
 </div>
+
 
 <div class="filters">
 
-<button class="chip active">All</button>
-<button class="chip">Girls</button>
-<button class="chip">Guys</button>
-<button class="chip">Couples</button>
-<button class="chip">Online</button>
+<button class="filter active">
+Girls
+</button>
+
+<button class="filter">
+Guys
+</button>
+
+<button class="filter">
+Couples
+</button>
+
+<button class="filter">
+Age⌄
+</button>
+
+<button class="filter">
+Country⌄
+</button>
+
+<button class="filter">
+Online Now 🟢
+</button>
 
 </div>
 
 </div>
 
-
-<div class="hero-card">
 
 <div class="hero-photo">
-👩🏻‍🦰
-</div>
 
-<div class="hero-overlay">
+<div class="demo-person">
 
-<b style="font-size:25px">
-Featured Profile
-<span class="online">●</span>
-</b>
-
-<div style="color:#bbb;margin-top:6px">
-21 • USA • Online now
-</div>
-
-</div>
-
-</div>
+👩🏻‍🦰📱
 
 </div>
 
 
-<section id="profiles">
+<div class="neon-text">
 
-<div class="titlebar">
+Add
 
-<h2>🔥 Featured Profiles</h2>
+<br>
 
-<span>4 profiles</span>
+Chat
 
-</div>
+<br>
 
+Connect
 
-<div class="grid" id="cards">
+<br>
 
+Have Fun
 
-<div class="card">
+<br>
 
-<div class="photo">👩🏻</div>
+<span class="neon-icon">
 
-<div class="info">
+♡ 👻
 
-<div class="name">
-maya_snap
-<span class="online">●</span>
-</div>
-
-<div class="meta">
-🇺🇸 21 • USA • Girl
-</div>
-
-<div class="bio">
-Fun, friendly & always up for a chat ✨
-</div>
-
-<a class="snap" href="#">
-👻 Add on Snapchat
-</a>
-
-<div class="locked">
-<span>Telegram 🔒</span>
-<span>Kik 🔒</span>
-<span>Discord 🔒</span>
-</div>
+</span>
 
 </div>
-</div>
-
-
-<div class="card">
-
-<div class="photo">👩🏼</div>
-
-<div class="info">
-
-<div class="name">
-sophie_vibes
-<span class="online">●</span>
-</div>
-
-<div class="meta">
-🇨🇦 23 • Canada • Girl
-</div>
-
-<div class="bio">
-Coffee, music and meeting new people 💕
-</div>
-
-<a class="snap" href="#">
-👻 Add on Snapchat
-</a>
-
-<div class="locked">
-<span>Telegram 🔒</span>
-<span>Kik 🔒</span>
-<span>Discord 🔒</span>
-</div>
-
-</div>
-</div>
-
-
-<div class="card">
-
-<div class="photo">👩🏽</div>
-
-<div class="info">
-
-<div class="name">
-zara_live
-<span class="online">●</span>
-</div>
-
-<div class="meta">
-🇬🇧 22 • UK • Girl
-</div>
-
-<div class="bio">
-Say hi if you can keep a conversation going 😌
-</div>
-
-<a class="snap" href="#">
-👻 Add on Snapchat
-</a>
-
-<div class="locked">
-<span>Telegram 🔒</span>
-<span>Kik 🔒</span>
-<span>Discord 🔒</span>
-</div>
-
-</div>
-</div>
-
-
-<div class="card">
-
-<div class="photo">👩🏻‍❤️‍👨🏻</div>
-
-<div class="info">
-
-<div class="name">
-together2
-<span class="online">●</span>
-</div>
-
-<div class="meta">
-🇦🇺 27 • Australia • Couple
-</div>
-
-<div class="bio">
-Travel, laughs and new friends 🌍
-</div>
-
-<a class="snap" href="#">
-👻 Add on Snapchat
-</a>
-
-<div class="locked">
-<span>Telegram 🔒</span>
-<span>Kik 🔒</span>
-<span>Discord 🔒</span>
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-<div class="premium" id="premium">
-
-<h2>💎 Unlock Premium Socials</h2>
-
-<p style="color:#aeb5c7;margin:15px">
-Snapchat stays FREE. Premium members can unlock
-Telegram, Kik, Discord, Instagram and Reddit.
-</p>
-
-<button class="btn primary">
-View Premium
-</button>
 
 </div>
 
 </section>
 
 
+<!-- FEATURED -->
+
+<section
+class="section"
+id="profiles">
+
+
+<div class="section-title">
+
+<h2>
+
+⭐ Featured Profiles
+
+</h2>
+
+<button class="view">
+
+View All
+
+</button>
+
+</div>
+
+
+<div class="cards">
+
+
+<!-- PROFILE 1 -->
+
+<div class="card">
+
+<span class="featured">
+
+Featured
+
+</span>
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏻📱
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Ayesha
+
+</div>
+
+<div class="meta">
+
+🇵🇰 21, Pakistan
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROFILE 2 -->
+
+<div class="card">
+
+<span class="featured">
+
+Featured
+
+</span>
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏼📱
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Emily
+
+</div>
+
+<div class="meta">
+
+🇺🇸 19, USA
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROFILE 3 -->
+
+<div class="card">
+
+<span class="featured">
+
+Featured
+
+</span>
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏽📱
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Sara
+
+</div>
+
+<div class="meta">
+
+🇬🇧 22, UK
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROFILE 4 -->
+
+<div class="card">
+
+<span class="featured">
+
+Featured
+
+</span>
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏻‍🦱📱
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Nimra
+
+</div>
+
+<div class="meta">
+
+🇨🇦 20, Canada
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROFILE 5 -->
+
+<div class="card">
+
+<span class="featured">
+
+Featured
+
+</span>
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏻📱
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Alma
+
+</div>
+
+<div class="meta">
+
+🇦🇺 23, Australia
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- LATEST -->
+
+
+<div class="section-title latest-title">
+
+<h2>
+
+🔥 Latest Profiles
+
+</h2>
+
+<button class="view">
+
+View All
+
+</button>
+
+</div>
+
+
+<div
+class="cards"
+id="latest">
+
+
+<div class="card">
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏽
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Maya
+
+</div>
+
+<div class="meta">
+
+🇺🇸 18, USA
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏻
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Zara
+
+</div>
+
+<div class="meta">
+
+🇬🇧 20, UK
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏼
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Kylie
+
+</div>
+
+<div class="meta">
+
+🇨🇦 19, Canada
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏻‍🦱
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Tanja
+
+</div>
+
+<div class="meta">
+
+🇩🇪 22, Germany
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<span class="online"></span>
+
+<div class="profile-photo">
+
+👩🏼
+
+</div>
+
+<div class="card-info">
+
+<div class="username">
+
+Sophie
+
+</div>
+
+<div class="meta">
+
+🇦🇺 21, Australia
+
+</div>
+
+<a
+class="snap-btn"
+href="#">
+
+👻 Add on Snapchat
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
 <footer>
-SnapMeetUp • 18+ only • Connect respectfully • Demo profiles
+
+
+<div>
+
+<div class="logo">
+
+👻 Snap<span>MeetUp</span>
+
+</div>
+
+<p>
+
+Meet • Connect • Snap
+
+</p>
+
+<p>
+
+◉　◎　♪　●
+
+</p>
+
+</div>
+
+
+<div>
+
+<h4>
+Quick Links
+</h4>
+
+<a href="#">
+Home
+</a>
+
+<a href="#profiles">
+Explore
+</a>
+
+<a
+href="#"
+onclick="openForm()">
+
+Submit Profile
+
+</a>
+
+<a href="#profiles">
+Top 100
+</a>
+
+</div>
+
+
+<div>
+
+<h4>
+Categories
+</h4>
+
+<a href="#profiles">
+Girls
+</a>
+
+<a href="#profiles">
+Guys
+</a>
+
+<a href="#profiles">
+Couples
+</a>
+
+<a href="#profiles">
+Online Now
+</a>
+
+<a href="#profiles">
+Featured
+</a>
+
+</div>
+
+
+<div>
+
+<h4>
+Support
+</h4>
+
+<a href="#">
+FAQ
+</a>
+
+<a href="#">
+Terms of Service
+</a>
+
+<a href="#">
+Privacy Policy
+</a>
+
+<a href="#">
+DMCA
+</a>
+
+<a href="#">
+18+ Only
+</a>
+
+</div>
+
+
+<div class="age-box">
+
+<span class="age">
+
+18+
+
+</span>
+
+<p>
+
+This website is for adults only.
+
+<br>
+
+You must be 18+ to use SnapMeetUp.
+
+</p>
+
+</div>
+
+
 </footer>
 
 
-<div class="modal" id="modal">
+<!-- SUBMIT PROFILE POPUP -->
 
-<div class="modalbox">
 
-<span class="close" onclick="closeForm()">×</span>
+<div
+class="modal"
+id="submitModal">
 
-<h2>Submit Profile</h2>
 
-<input placeholder="Username">
+<div class="modal-box">
+
+
+<span
+class="close"
+onclick="closeForm()">
+
+×
+
+</span>
+
+
+<h2>
+
+Submit Your Profile
+
+</h2>
+
+
+<p style="color:#b6c0cc">
+
+Get listed on SnapMeetUp and let
+new people add you on Snapchat!
+
+</p>
+
+
+<div class="form">
+
+
+<input
+placeholder="Snapchat Username *">
+
+
+<input
+placeholder="Your Name (Optional)">
+
 
 <select>
-<option>Girl</option>
-<option>Guy</option>
-<option>Couple</option>
+
+<option>
+Select Age *
+</option>
+
+<option>
+18
+</option>
+
+<option>
+19
+</option>
+
+<option>
+20
+</option>
+
+<option>
+21
+</option>
+
+<option>
+22
+</option>
+
+<option>
+23+
+</option>
+
 </select>
 
-<input placeholder="Age (18+)">
 
-<input placeholder="Country">
+<input
+placeholder="Country *">
 
-<input placeholder="Snapchat username">
 
-<textarea placeholder="Short bio"></textarea>
+<select>
 
-<label>
-<input type="checkbox" style="width:auto">
-I confirm I am 18+
-</label>
+<option>
+Girl
+</option>
+
+<option>
+Guy
+</option>
+
+<option>
+Couple
+</option>
+
+</select>
+
+
+<div class="upload">
+
+☁️
 
 <br><br>
 
-<button class="btn primary" onclick="closeForm()">
+<b>
+
+Upload Photos
+
+</b>
+
+<br>
+
+<small>
+
+Photo upload will connect to
+the database/backend later.
+
+</small>
+
+</div>
+
+
+<textarea
+placeholder="Tell something about yourself...">
+
+</textarea>
+
+
+<label class="agree">
+
+<input type="checkbox">
+
+I confirm I am 18+ and agree to
+the Terms & Conditions.
+
+</label>
+
+
+<button
+class="submit-profile"
+onclick="demoSubmit()">
+
 Submit Profile
+
 </button>
+
+
+</div>
 
 </div>
 
@@ -644,56 +1655,147 @@ Submit Profile
 
 <script>
 
+/* OPEN FORM */
+
 function openForm(){
-document.getElementById("modal").style.display="flex";
+
+document.getElementById(
+"submitModal"
+).style.display="flex";
+
 }
+
+
+/* CLOSE FORM */
 
 function closeForm(){
-document.getElementById("modal").style.display="none";
+
+document.getElementById(
+"submitModal"
+).style.display="none";
+
 }
 
-function filterCards(){
 
-let q =
-document.getElementById("search").value.toLowerCase();
+/* DEMO SUBMIT */
 
-document.querySelectorAll(".card").forEach(function(card){
+function demoSubmit(){
 
-card.style.display =
-card.innerText.toLowerCase().includes(q)
-? "block"
-: "none";
+alert(
+"Demo only — database and admin approval will be connected in the next stage."
+);
+
+closeForm();
+
+}
+
+
+/* SEARCH */
+
+function searchProfiles(){
+
+let value =
+document
+.getElementById("search")
+.value
+.toLowerCase();
+
+
+document
+.querySelectorAll(".card")
+.forEach(function(card){
+
+let text =
+card.innerText.toLowerCase();
+
+if(
+text.includes(value)
+){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
 
 });
 
 }
 
-document.getElementById("search")
-.addEventListener("keyup",function(e){
 
-if(e.key==="Enter"){
-filterCards();
+/* ENTER SEARCH */
+
+document
+.getElementById("search")
+.addEventListener(
+"keyup",
+function(event){
+
+if(
+event.key==="Enter"
+){
+
+searchProfiles();
+
 }
 
 });
 
-document.querySelectorAll(".chip")
+
+/* FILTER BUTTON LOOK */
+
+document
+.querySelectorAll(".filter")
 .forEach(function(button){
 
-button.onclick=function(){
+button.addEventListener(
+"click",
+function(){
 
-document.querySelectorAll(".chip")
-.forEach(function(x){
-x.classList.remove("active");
+document
+.querySelectorAll(".filter")
+.forEach(function(other){
+
+other
+.classList
+.remove("active");
+
 });
 
-button.classList.add("active");
+button
+.classList
+.add("active");
 
-};
+});
+
+});
+
+
+/* CLOSE MODAL BY CLICKING OUTSIDE */
+
+window.addEventListener(
+"click",
+function(event){
+
+let modal =
+document.getElementById(
+"submitModal"
+);
+
+if(
+event.target===modal
+){
+
+closeForm();
+
+}
 
 });
 
 </script>
+
 
 </body>
 </html>
