@@ -128,7 +128,7 @@ textarea.field{height:78px;padding-top:10px;resize:vertical} .full{grid-column:1
 <header class="top">
   <div class="logo">👻 Snap<span>MeetUp</span></div>
   <nav class="nav"><a href="#">Home</a><a href="#featured">Explore</a><a href="#featured">Girls</a><a href="#featured">Guys</a><a href="#featured">Couples</a><a href="#featured">Top 100</a></nav>
-  <div class="actions"><button class="btn" type="button" onclick="openAuth('login')">Login</button><button class="btn primary" type="button" onclick="openAuth('register')">Register</button></div>
+  <div class="actions" id="authActions"><button class="btn" id="loginBtn" type="button" onclick="openAuth('login')">Login</button><button class="btn primary" id="registerBtn" type="button" onclick="openAuth('register')">Register</button></div>
 </header>
 
 <div class="layout">
@@ -250,6 +250,31 @@ function openAuth(mode){
 }
 function closeAuth(){document.getElementById('authModal').classList.remove('show')}
 function backdropClose(e){if(e.target.id==='authModal')closeAuth()}
+
+async function updateAuthUI(session){
+ const actions=document.getElementById('authActions');
+ if(!actions) return;
+ if(session?.user){
+   const email=session.user.email||'Account';
+   actions.innerHTML='<button class="btn" type="button" title="'+email.replace(/"/g,'&quot;')+'">Account ✓</button><button class="btn primary" type="button" onclick="logoutUser()">Logout</button>';
+ }else{
+   actions.innerHTML='<button class="btn" id="loginBtn" type="button" onclick="openAuth(\'login\')">Login</button><button class="btn primary" id="registerBtn" type="button" onclick="openAuth(\'register\')">Register</button>';
+ }
+}
+
+async function logoutUser(){
+ if(!sb) return;
+ await sb.auth.signOut();
+ await updateAuthUI(null);
+}
+
+async function initAuth(){
+ if(!sb) return;
+ const {data}=await sb.auth.getSession();
+ await updateAuthUI(data?.session||null);
+ sb.auth.onAuthStateChange((_event,session)=>updateAuthUI(session));
+}
+
 async function doAuth(){
  const email=document.getElementById('authEmail').value.trim(), password=document.getElementById('authPassword').value;
  const msg=document.getElementById('authMsg');
@@ -265,7 +290,8 @@ async function doAuth(){
    const {data,error}=await sb.auth.signInWithPassword({email,password});
    if(error) throw error;
    msg.textContent='Login successful.';
-   setTimeout(closeAuth,700);
+   await updateAuthUI(data.session);
+   setTimeout(closeAuth,500);
   }
  }catch(e){msg.textContent=e.message||'Authentication failed.'}
 }
@@ -300,6 +326,8 @@ function applyFilters(){
    card.style.display=(typeOK&&ageOK&&countryOK&&onlineOK)?'':'none';
  });
 }
+
+initAuth();
 
 function demoSnap(name){alert(name+' is a fictional AI demo profile. No real Snapchat account is linked.')}
 function searchDemo(){const q=document.getElementById('searchBox').value.trim(); if(q) alert('Search UI is ready for database connection: '+q)}
