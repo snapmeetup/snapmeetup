@@ -95,5 +95,51 @@ html,body{margin:0;background:#06111c;color:white;font-family:Arial,sans-serif}
 <script>
 function msg(t){let x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
 function demo(){msg('Fictional AI demo profile — no real Snapchat account is connected.')}
+
+const SUPABASE_URL='https://zoaknrkiusoyvhzpqktc.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_Tb3-v9XXh8HxRkiGQwc9tA_fGgihqYS';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+let authMode='login';
+function openAuth(mode){authMode=mode;document.getElementById('authOverlay').classList.add('show');renderAuth()}
+function closeAuth(){document.getElementById('authOverlay').classList.remove('show')}
+function toggleAuth(){authMode=authMode==='login'?'register':'login';renderAuth()}
+function renderAuth(){
+ const reg=authMode==='register';
+ document.getElementById('authTitle').textContent=reg?'Create Account':'Login';
+ document.getElementById('authHint').textContent=reg?'Register with your email. You must verify your email before signing in.':'Login to your SnapMeetUp account.';
+ document.getElementById('authAction').textContent=reg?'Register':'Login';
+ document.getElementById('switchText').textContent=reg?'Already have an account?':"Don't have an account?";
+ document.getElementById('switchBtn').textContent=reg?'Login':'Register';
+ document.getElementById('authMsg').textContent='';
+}
+function allowedEmail(email){
+ const domain=(email.split('@')[1]||'').toLowerCase();
+ return ['gmail.com','googlemail.com','yahoo.com','hotmail.com','outlook.com'].includes(domain);
+}
+async function submitAuth(){
+ const email=document.getElementById('authEmail').value.trim();
+ const password=document.getElementById('authPassword').value;
+ const out=document.getElementById('authMsg');
+ if(!allowedEmail(email)){out.textContent='Use Gmail, Yahoo, Hotmail or Outlook email.';return}
+ if(password.length<6){out.textContent='Password must be at least 6 characters.';return}
+ out.textContent='Please wait...';
+ if(authMode==='register'){
+   const {error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:'https://snapmeetup.github.io/snapmeetup/'}});
+   if(error){out.textContent=error.message;return}
+   out.textContent='Account created. Check your email and click the verification link, then login.';
+ }else{
+   const {error}=await sb.auth.signInWithPassword({email,password});
+   if(error){out.textContent=error.message;return}
+   out.textContent='Login successful.';setTimeout(closeAuth,600);refreshUser();
+ }
+}
+async function logoutUser(){await sb.auth.signOut();refreshUser();msg('Logged out.')}
+async function refreshUser(){
+ const {data}=await sb.auth.getUser();const u=data&&data.user;
+ const box=document.getElementById('authLogged');
+ if(u){document.getElementById('authUser').textContent=u.email;box.style.display='block'}else box.style.display='none';
+}
+sb.auth.onAuthStateChange(()=>refreshUser());refreshUser();
+
 </script>
 </body></html>
