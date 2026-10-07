@@ -81,7 +81,80 @@ footer{
 .admin{padding:0;overflow:hidden}.adminbar{padding:10px 12px;border-bottom:1px solid #26384c;font-weight:800}.adminbody{display:grid;grid-template-columns:80px 1fr;min-height:190px}.adminnav{background:#0a1421;padding:8px;font-size:9px;line-height:2.5}.admintable{padding:9px;font-size:8px}.tabsmini span{display:inline-block;border:1px solid #314357;padding:5px 7px;border-radius:5px;margin:0 2px 8px}.row{display:grid;grid-template-columns:1.3fr .5fr .5fr .8fr 1.2fr;gap:3px;align-items:center;border-top:1px solid #26384c;padding:6px 0}.pending{background:#ffe719;color:#111;padding:3px;border-radius:3px}.approve{background:#1bd876;color:#07111d;padding:3px;border-radius:3px}.reject{background:#ff3c61;color:#fff;padding:3px;border-radius:3px}
 @media(max-width:1150px){.site-layout{display:block}.right-rail{border-left:0;border-top:4px solid #ff2585;max-width:760px;margin:0 auto}.site-left{width:100%}}
 
-</style></head>
+
+/* ===== REFERENCE LAYOUT FIX ===== */
+.site-layout{
+  display:grid !important;
+  grid-template-columns:minmax(0, 2fr) minmax(430px, 1fr) !important;
+  width:100% !important;
+  max-width:1440px !important;
+  margin:0 auto !important;
+  align-items:start !important;
+}
+.site-left{min-width:0 !important;width:100% !important}
+.right-rail{
+  width:100% !important;
+  min-width:0 !important;
+  border-left:4px solid #ff2585 !important;
+  padding:0 12px 14px !important;
+}
+.wrap{max-width:100% !important;padding-left:34px !important;padding-right:34px !important}
+.hero{min-height:430px !important}
+.hero-photo{width:55% !important;height:100% !important;object-fit:cover !important;object-position:center top !important}
+.hero-copy{width:53% !important}
+.grid{grid-template-columns:repeat(5,minmax(0,1fr)) !important;gap:12px !important}
+.profile{min-width:0 !important}
+.pic{height:190px !important}
+.pic img{width:100% !important;height:100% !important;object-fit:cover !important;object-position:center top !important}
+.info{padding:10px !important}
+.info b{font-size:14px !important}
+.info small{font-size:11px !important}
+.info button{font-size:12px !important;padding:9px 4px !important}
+
+/* Right profile card: large, readable, like reference */
+.profile-top{grid-template-columns:minmax(0,1fr) 105px !important;gap:8px !important}
+.profile-top .big{height:260px !important;object-fit:cover !important;object-position:center top !important}
+.profile-thumbs img{height:126px !important;object-fit:cover !important}
+.rail-name h3{font-size:24px !important}
+.snapbtn{font-size:14px !important;min-width:155px !important}
+.rail-box{padding:16px !important}
+.rail-title{font-size:20px !important;padding:10px 13px !important}
+
+/* Submit form spacing */
+.formgrid{gap:10px !important}
+.rail-box input,.rail-box select,.rail-box textarea{padding:9px !important;font-size:12px !important}
+.upload{height:105px !important}
+
+/* Admin panel readability */
+.adminbody{grid-template-columns:92px 1fr !important;min-height:230px !important}
+.adminnav{font-size:10px !important}
+.admintable{font-size:9px !important}
+
+/* Remove the extra lower placeholder row; reference already has real cards */
+.more{display:none !important}
+
+@media(max-width:1200px){
+  .site-layout{grid-template-columns:minmax(0,1.8fr) minmax(390px,1fr) !important}
+  .wrap{padding-left:22px !important;padding-right:22px !important}
+}
+@media(max-width:980px){
+  .site-layout{display:block !important}
+  .right-rail{border-left:0 !important;border-top:4px solid #ff2585 !important;max-width:720px !important;margin:0 auto !important}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+}
+
+</style>
+<style>
+.pic img{
+  transform:scale(1.16);
+  transform-origin:center 25%;
+}
+.profile-top .big,.profile-thumbs img{
+  transform:none;
+}
+</style>
+
+</head>
 <body><div class="site-layout"><div class="site-left">
 <header><div class="wrap head"><a class="brand" href="#">👻 Snap<span>MeetUp</span></a>
 <nav><a href="#">Home</a><a href="#featured">Explore</a><a href="#featured">Girls</a><a href="#">Guys</a><a href="#">Couples</a><a href="#">Top 100</a></nav>
