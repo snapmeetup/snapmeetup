@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SnapMeetUp — Meet • Connect • Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a class="brand" href="#">👻 <b>Snap<span>MeetUp</span></b></a>
+  <nav><a href="#home">Home</a><a href="#explore">Explore</a><a href="#premium">Premium</a></nav>
+  <button class="pink" onclick="openSubmit()">Submit Profile</button>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div>
+      <div class="badge">🔞 Adults only • 18+</div>
+      <h1>Meet. Connect.<br><em>Chat.</em></h1>
+      <p>Discover adult profiles and connect through the social platforms they choose to share.</p>
+      <div class="search"><input id="search" placeholder="Search username, country or bio..." oninput="render()"><button>⌕</button></div>
+      <div class="filters">
+        <button class="active" data-filter="All">All</button><button data-filter="Girl">Girls</button>
+        <button data-filter="Guy">Guys</button><button data-filter="Couple">Couples</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="ghost">👻</div>
+      <h2>Snapchat is FREE</h2>
+      <p>Extra social links unlock with Premium.</p>
+      <div class="platforms">👻 FREE &nbsp; ✈️ 🔒 &nbsp; 💬 🔒 &nbsp; 🎮 🔒 &nbsp; 📸 🔒</div>
+    </div>
+  </section>
+
+  <section id="explore">
+    <div class="section-title"><h2>🔥 Latest Profiles</h2><span id="count"></span></div>
+    <div id="profiles" class="grid"></div>
+  </section>
+
+  <section id="premium" class="premium">
+    <div><span class="badge">💎 PREMIUM</span><h2>Unlock more ways to connect</h2>
+      <p>Snapchat stays free. Premium profiles can add Telegram, Kik, Discord, Instagram and Reddit.</p>
+    </div>
+    <div class="locks"><b>👻 Snapchat <i>FREE ✓</i></b><b>✈️ Telegram 🔒</b><b>💬 Kik 🔒</b><b>🎮 Discord 🔒</b><b>📸 Instagram 🔒</b><b>👽 Reddit 🔒</b></div>
+  </section>
+</main>
+
+<footer><b>👻 Snap<span>MeetUp</span></b><p>Meet • Connect • Chat</p><small>🔞 This website is for adults 18+ only.</small></footer>
+
+<div id="modal" class="modal">
+ <div class="panel">
+  <button class="x" onclick="closeSubmit()">×</button>
+  <h2>Submit Your Profile</h2>
+  <p>Snapchat is free. Premium social fields are shown locked in this demo.</p>
+  <form id="form">
+   <label>Snapchat username *</label><input id="snap" required placeholder="yourusername">
+   <div class="two"><div><label>Age *</label><input id="age" required type="number" min="18" max="99"></div><div><label>Country *</label><input id="country" required placeholder="USA"></div></div>
+   <label>Gender *</label><select id="gender"><option>Girl</option><option>Guy</option><option>Couple</option></select>
+   <label>Bio</label><textarea id="bio" maxlength="180" placeholder="Tell people a little about yourself..."></textarea>
+   <label class="check"><input type="checkbox" required> I confirm I am 18+ and agree to the site rules.</label>
+   <button class="pink wide" type="submit">Submit Profile</button>
+  </form>
+ </div>
+</div>
+
+<script src="app.js"></script>
+</body></html>
