@@ -25,6 +25,43 @@ footer{margin-top:35px;border-top:1px solid #1b2b3d;background:#050d16;padding:4
 .notice{position:fixed;left:50%;bottom:25px;transform:translateX(-50%) translateY(100px);background:#fff;color:#111;padding:12px 18px;border-radius:9px;z-index:50;transition:.25s;box-shadow:0 10px 35px #0008}.notice.show{transform:translateX(-50%) translateY(0)}
 @media(max-width:900px){nav{display:none}.grid,.more{grid-template-columns:repeat(2,1fr)}.hero-photo{width:100%;opacity:.5}.hero-copy{width:100%}.hero:after{background:linear-gradient(90deg,#06111df2,#06111d99)}.foot{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.wrap{padding:0 14px}.actions .pill:first-child{display:none}h1{font-size:37px}.hero{min-height:470px}.hero-copy{padding-top:55px}.grid,.more{grid-template-columns:1fr 1fr;gap:10px}.pic{height:150px}.info button{font-size:12px}.foot{grid-template-columns:1fr}}
+
+/* === LOCKED REFERENCE FINISH === */
+body{
+  border-left:4px solid #ff2585;
+  border-right:4px solid #ff2585;
+  min-height:100vh;
+}
+header{
+  border-top:3px solid #ff2585;
+}
+.hero{
+  border-bottom:2px solid #ff2585;
+}
+.section{
+  position:relative;
+}
+.profile{
+  border:1px solid #40546a;
+  outline:1px solid rgba(255,37,133,.08);
+}
+.profile:hover{
+  border-color:#ff2585;
+  box-shadow:0 10px 28px rgba(255,37,133,.16);
+}
+.pic img,.hero-photo{
+  image-rendering:auto;
+  -webkit-font-smoothing:antialiased;
+  transform:translateZ(0);
+}
+footer{
+  border-top:2px solid #ff2585;
+  border-bottom:3px solid #ff2585;
+}
+@media(max-width:520px){
+  body{border-left:2px solid #ff2585;border-right:2px solid #ff2585}
+}
+
 </style></head>
 <body>
 <header><div class="wrap head"><a class="brand" href="#">👻 Snap<span>MeetUp</span></a>
