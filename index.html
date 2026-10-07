@@ -1,68 +1,699 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>SnapMeetUp — Meet • Connect • Chat</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SnapMeetUp - Meet & Connect</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#070b16;
+  color:white;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+nav{
+  height:76px;
+  display:flex;
+  align-items:center;
+  gap:28px;
+  padding:0 6%;
+  border-bottom:1px solid #24283b;
+  background:#080d18;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:800;
+}
+
+.pink{
+  color:#ff2f8b;
+}
+
+.navlinks{
+  display:flex;
+  gap:24px;
+  color:#c6c9d4;
+  font-size:14px;
+}
+
+.spacer{
+  flex:1;
+}
+
+.btn{
+  border:0;
+  border-radius:24px;
+  padding:12px 22px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.primary{
+  background:#ff2f8b;
+  color:white;
+}
+
+.hero{
+  min-height:510px;
+  padding:72px 7%;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:55px;
+  align-items:center;
+  background:
+  radial-gradient(circle at 80% 25%,#32122d 0,#111023 30%,#070b16 62%);
+}
+
+.badge{
+  display:inline-block;
+  border:1px solid #8d275a;
+  border-radius:20px;
+  padding:8px 13px;
+  color:#ff76b1;
+  font-size:13px;
+}
+
+h1{
+  font-size:58px;
+  line-height:1.02;
+  margin:18px 0 15px;
+}
+
+.lead{
+  color:#b9bfd0;
+  font-size:17px;
+  max-width:560px;
+  line-height:1.5;
+}
+
+.search{
+  display:flex;
+  margin-top:26px;
+  max-width:610px;
+}
+
+.search input{
+  flex:1;
+  background:#101827;
+  border:1px solid #2a3548;
+  color:white;
+  padding:15px;
+  border-radius:13px 0 0 13px;
+}
+
+.search button{
+  width:58px;
+  border:0;
+  background:#ff2f8b;
+  color:white;
+  border-radius:0 13px 13px 0;
+  font-size:20px;
+}
+
+.filters{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+.chip{
+  padding:9px 17px;
+  border:1px solid #33405a;
+  border-radius:20px;
+  background:#101827;
+  color:#d9ddea;
+  cursor:pointer;
+}
+
+.chip.active{
+  background:#ff2f8b;
+  border-color:#ff2f8b;
+}
+
+.hero-card{
+  height:355px;
+  border:1px solid #42324f;
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(145deg,#25152d,#12182b);
+}
+
+.hero-photo{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:115px;
+}
+
+.hero-overlay{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:24px;
+  background:linear-gradient(transparent,#080b15 80%);
+}
+
+.online{
+  color:#4ee59a;
+}
+
+section{
+  padding:55px 7%;
+}
+
+.titlebar{
+  display:flex;
+  align-items:center;
+  margin-bottom:22px;
+}
+
+.titlebar h2{
+  font-size:25px;
+}
+
+.titlebar span{
+  margin-left:auto;
+  color:#8d98b5;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.card{
+  background:#101827;
+  border:1px solid #243047;
+  border-radius:18px;
+  overflow:hidden;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  border-color:#ff2f8b;
+}
+
+.photo{
+  height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:78px;
+  background:linear-gradient(145deg,#25344a,#172033);
+}
+
+.info{
+  padding:17px;
+}
+
+.name{
+  font-size:18px;
+  font-weight:800;
+}
+
+.meta{
+  font-size:13px;
+  color:#9ba6bd;
+  margin:7px 0;
+}
+
+.bio{
+  color:#c7ccda;
+  font-size:14px;
+  min-height:36px;
+}
+
+.snap{
+  display:block;
+  text-align:center;
+  background:#ffd927;
+  color:#111;
+  padding:11px;
+  border-radius:10px;
+  font-weight:800;
+  margin-top:14px;
+}
+
+.locked{
+  display:flex;
+  justify-content:space-between;
+  margin-top:11px;
+  color:#8e97ad;
+  font-size:12px;
+}
+
+.premium{
+  margin-top:55px;
+  padding:35px;
+  border:1px solid #663255;
+  border-radius:22px;
+  background:linear-gradient(135deg,#201226,#10182a);
+  text-align:center;
+}
+
+footer{
+  text-align:center;
+  color:#707b95;
+  padding:35px;
+  border-top:1px solid #20283a;
+  font-size:13px;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000b;
+  z-index:10;
+  align-items:center;
+  justify-content:center;
+}
+
+.modalbox{
+  width:min(480px,92%);
+  background:#101827;
+  border:1px solid #39445c;
+  border-radius:20px;
+  padding:25px;
+}
+
+.modalbox input,
+.modalbox select,
+.modalbox textarea{
+  width:100%;
+  margin:6px 0;
+  padding:12px;
+  border-radius:9px;
+  border:1px solid #34405a;
+  background:#090f1c;
+  color:white;
+}
+
+.close{
+  float:right;
+  cursor:pointer;
+  font-size:24px;
+}
+
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .navlinks{
+    display:none;
+  }
+
+  h1{
+    font-size:45px;
+  }
+}
+
+@media(max-width:520px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
+
 <body>
-<header>
-  <a class="brand" href="#">👻 <b>Snap<span>MeetUp</span></b></a>
-  <nav><a href="#home">Home</a><a href="#explore">Explore</a><a href="#premium">Premium</a></nav>
-  <button class="pink" onclick="openSubmit()">Submit Profile</button>
-</header>
 
-<main id="home">
-  <section class="hero">
-    <div>
-      <div class="badge">🔞 Adults only • 18+</div>
-      <h1>Meet. Connect.<br><em>Chat.</em></h1>
-      <p>Discover adult profiles and connect through the social platforms they choose to share.</p>
-      <div class="search"><input id="search" placeholder="Search username, country or bio..." oninput="render()"><button>⌕</button></div>
-      <div class="filters">
-        <button class="active" data-filter="All">All</button><button data-filter="Girl">Girls</button>
-        <button data-filter="Guy">Guys</button><button data-filter="Couple">Couples</button>
-      </div>
-    </div>
-    <div class="hero-card">
-      <div class="ghost">👻</div>
-      <h2>Snapchat is FREE</h2>
-      <p>Extra social links unlock with Premium.</p>
-      <div class="platforms">👻 FREE &nbsp; ✈️ 🔒 &nbsp; 💬 🔒 &nbsp; 🎮 🔒 &nbsp; 📸 🔒</div>
-    </div>
-  </section>
+<nav>
 
-  <section id="explore">
-    <div class="section-title"><h2>🔥 Latest Profiles</h2><span id="count"></span></div>
-    <div id="profiles" class="grid"></div>
-  </section>
-
-  <section id="premium" class="premium">
-    <div><span class="badge">💎 PREMIUM</span><h2>Unlock more ways to connect</h2>
-      <p>Snapchat stays free. Premium profiles can add Telegram, Kik, Discord, Instagram and Reddit.</p>
-    </div>
-    <div class="locks"><b>👻 Snapchat <i>FREE ✓</i></b><b>✈️ Telegram 🔒</b><b>💬 Kik 🔒</b><b>🎮 Discord 🔒</b><b>📸 Instagram 🔒</b><b>👽 Reddit 🔒</b></div>
-  </section>
-</main>
-
-<footer><b>👻 Snap<span>MeetUp</span></b><p>Meet • Connect • Chat</p><small>🔞 This website is for adults 18+ only.</small></footer>
-
-<div id="modal" class="modal">
- <div class="panel">
-  <button class="x" onclick="closeSubmit()">×</button>
-  <h2>Submit Your Profile</h2>
-  <p>Snapchat is free. Premium social fields are shown locked in this demo.</p>
-  <form id="form">
-   <label>Snapchat username *</label><input id="snap" required placeholder="yourusername">
-   <div class="two"><div><label>Age *</label><input id="age" required type="number" min="18" max="99"></div><div><label>Country *</label><input id="country" required placeholder="USA"></div></div>
-   <label>Gender *</label><select id="gender"><option>Girl</option><option>Guy</option><option>Couple</option></select>
-   <label>Bio</label><textarea id="bio" maxlength="180" placeholder="Tell people a little about yourself..."></textarea>
-   <label class="check"><input type="checkbox" required> I confirm I am 18+ and agree to the site rules.</label>
-   <button class="pink wide" type="submit">Submit Profile</button>
-  </form>
- </div>
+<div class="logo">
+👻 Snap<span class="pink">MeetUp</span>
 </div>
 
-<script src="app.js"></script>
-</body></html>
+<div class="navlinks">
+<a href="#">Home</a>
+<a href="#profiles">Explore</a>
+<a href="#profiles">Girls</a>
+<a href="#profiles">Guys</a>
+<a href="#profiles">Couples</a>
+<a href="#premium">Premium</a>
+</div>
+
+<div class="spacer"></div>
+
+<button class="btn primary" onclick="openForm()">
+Submit Profile
+</button>
+
+</nav>
+
+
+<div class="hero">
+
+<div>
+
+<span class="badge">
+🔞 Adults only • 18+
+</span>
+
+<h1>
+Meet New Friends<br>
+on <span class="pink">Snapchat.</span>
+</h1>
+
+<p class="lead">
+Discover adult profiles, find new people and connect
+through the social platforms they choose to share.
+</p>
+
+<div class="search">
+
+<input
+id="search"
+placeholder="Search username, country or bio...">
+
+<button onclick="filterCards()">⌕</button>
+
+</div>
+
+<div class="filters">
+
+<button class="chip active">All</button>
+<button class="chip">Girls</button>
+<button class="chip">Guys</button>
+<button class="chip">Couples</button>
+<button class="chip">Online</button>
+
+</div>
+
+</div>
+
+
+<div class="hero-card">
+
+<div class="hero-photo">
+👩🏻‍🦰
+</div>
+
+<div class="hero-overlay">
+
+<b style="font-size:25px">
+Featured Profile
+<span class="online">●</span>
+</b>
+
+<div style="color:#bbb;margin-top:6px">
+21 • USA • Online now
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<section id="profiles">
+
+<div class="titlebar">
+
+<h2>🔥 Featured Profiles</h2>
+
+<span>4 profiles</span>
+
+</div>
+
+
+<div class="grid" id="cards">
+
+
+<div class="card">
+
+<div class="photo">👩🏻</div>
+
+<div class="info">
+
+<div class="name">
+maya_snap
+<span class="online">●</span>
+</div>
+
+<div class="meta">
+🇺🇸 21 • USA • Girl
+</div>
+
+<div class="bio">
+Fun, friendly & always up for a chat ✨
+</div>
+
+<a class="snap" href="#">
+👻 Add on Snapchat
+</a>
+
+<div class="locked">
+<span>Telegram 🔒</span>
+<span>Kik 🔒</span>
+<span>Discord 🔒</span>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+
+<div class="photo">👩🏼</div>
+
+<div class="info">
+
+<div class="name">
+sophie_vibes
+<span class="online">●</span>
+</div>
+
+<div class="meta">
+🇨🇦 23 • Canada • Girl
+</div>
+
+<div class="bio">
+Coffee, music and meeting new people 💕
+</div>
+
+<a class="snap" href="#">
+👻 Add on Snapchat
+</a>
+
+<div class="locked">
+<span>Telegram 🔒</span>
+<span>Kik 🔒</span>
+<span>Discord 🔒</span>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+
+<div class="photo">👩🏽</div>
+
+<div class="info">
+
+<div class="name">
+zara_live
+<span class="online">●</span>
+</div>
+
+<div class="meta">
+🇬🇧 22 • UK • Girl
+</div>
+
+<div class="bio">
+Say hi if you can keep a conversation going 😌
+</div>
+
+<a class="snap" href="#">
+👻 Add on Snapchat
+</a>
+
+<div class="locked">
+<span>Telegram 🔒</span>
+<span>Kik 🔒</span>
+<span>Discord 🔒</span>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+
+<div class="photo">👩🏻‍❤️‍👨🏻</div>
+
+<div class="info">
+
+<div class="name">
+together2
+<span class="online">●</span>
+</div>
+
+<div class="meta">
+🇦🇺 27 • Australia • Couple
+</div>
+
+<div class="bio">
+Travel, laughs and new friends 🌍
+</div>
+
+<a class="snap" href="#">
+👻 Add on Snapchat
+</a>
+
+<div class="locked">
+<span>Telegram 🔒</span>
+<span>Kik 🔒</span>
+<span>Discord 🔒</span>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<div class="premium" id="premium">
+
+<h2>💎 Unlock Premium Socials</h2>
+
+<p style="color:#aeb5c7;margin:15px">
+Snapchat stays FREE. Premium members can unlock
+Telegram, Kik, Discord, Instagram and Reddit.
+</p>
+
+<button class="btn primary">
+View Premium
+</button>
+
+</div>
+
+</section>
+
+
+<footer>
+SnapMeetUp • 18+ only • Connect respectfully • Demo profiles
+</footer>
+
+
+<div class="modal" id="modal">
+
+<div class="modalbox">
+
+<span class="close" onclick="closeForm()">×</span>
+
+<h2>Submit Profile</h2>
+
+<input placeholder="Username">
+
+<select>
+<option>Girl</option>
+<option>Guy</option>
+<option>Couple</option>
+</select>
+
+<input placeholder="Age (18+)">
+
+<input placeholder="Country">
+
+<input placeholder="Snapchat username">
+
+<textarea placeholder="Short bio"></textarea>
+
+<label>
+<input type="checkbox" style="width:auto">
+I confirm I am 18+
+</label>
+
+<br><br>
+
+<button class="btn primary" onclick="closeForm()">
+Submit Profile
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openForm(){
+document.getElementById("modal").style.display="flex";
+}
+
+function closeForm(){
+document.getElementById("modal").style.display="none";
+}
+
+function filterCards(){
+
+let q =
+document.getElementById("search").value.toLowerCase();
+
+document.querySelectorAll(".card").forEach(function(card){
+
+card.style.display =
+card.innerText.toLowerCase().includes(q)
+? "block"
+: "none";
+
+});
+
+}
+
+document.getElementById("search")
+.addEventListener("keyup",function(e){
+
+if(e.key==="Enter"){
+filterCards();
+}
+
+});
+
+document.querySelectorAll(".chip")
+.forEach(function(button){
+
+button.onclick=function(){
+
+document.querySelectorAll(".chip")
+.forEach(function(x){
+x.classList.remove("active");
+});
+
+button.classList.add("active");
+
+};
+
+});
+
+</script>
+
+</body>
+</html>
