@@ -81,6 +81,40 @@ textarea.field{height:78px;padding-top:10px;resize:vertical} .full{grid-column:1
   filter:none !important;
 }
 
+
+/* === ONLY PROFILE IMAGE/BADGE FIX — everything else unchanged === */
+.section .pic{position:relative;overflow:hidden !important;}
+.section .pic>img{
+  width:100% !important;
+  height:calc(100% + 30px) !important;
+  margin-top:-30px !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  display:block !important;
+  filter:none !important;
+  image-rendering:auto !important;
+}
+#featured .featured-badge{
+  position:absolute !important;
+  z-index:20 !important;
+  left:8px !important;
+  top:8px !important;
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  padding:5px 9px !important;
+  border-radius:7px !important;
+  background:#ff2482 !important;
+  color:#fff !important;
+  font:800 12px/1 Arial,Helvetica,sans-serif !important;
+  white-space:nowrap !important;
+  text-shadow:none !important;
+  box-shadow:none !important;
+  filter:none !important;
+}
+/* keep section titles completely outside the profile pictures */
+.section h2{position:relative !important;z-index:2 !important;margin:24px 0 16px !important;}
+.section .grid{position:relative !important;z-index:1 !important;}
 </style>
 </head>
 <body>
