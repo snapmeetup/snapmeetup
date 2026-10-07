@@ -55,67 +55,59 @@ textarea.field{height:78px;padding-top:10px;resize:vertical} .full{grid-column:1
 
 
 
-/* === SINGLE FEATURED BADGE: covers the old baked-in blurry label === */
-#featured .pic{position:relative;overflow:hidden}
-#featured .featured-badge{
-  position:absolute !important;
-  z-index:999 !important;
-  left:0 !important;
-  top:0 !important;
-  width:82px !important;
-  height:40px !important;
-  padding:0 !important;
-  border-radius:0 0 10px 0 !important;
-  background:#ff2482 !important;
-  color:#fff !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  font-family:Arial,Helvetica,sans-serif !important;
-  font-size:12px !important;
-  line-height:1 !important;
-  font-weight:800 !important;
-  white-space:nowrap !important;
-  text-shadow:none !important;
-  box-shadow:none !important;
-  filter:none !important;
-}
-
-
-/* === ONLY PROFILE IMAGE/BADGE FIX — everything else unchanged === */
-.section .pic{position:relative;overflow:hidden !important;}
-.section .pic>img{
-  width:100% !important;
-  height:calc(100% + 30px) !important;
-  margin-top:-30px !important;
-  object-fit:cover !important;
-  object-position:center center !important;
-  display:block !important;
-  filter:none !important;
-  image-rendering:auto !important;
-}
-#featured .featured-badge{
-  position:absolute !important;
-  z-index:20 !important;
-  left:8px !important;
-  top:8px !important;
-  width:auto !important;
-  height:auto !important;
-  min-width:0 !important;
-  padding:5px 9px !important;
-  border-radius:7px !important;
-  background:#ff2482 !important;
-  color:#fff !important;
-  font:800 12px/1 Arial,Helvetica,sans-serif !important;
-  white-space:nowrap !important;
-  text-shadow:none !important;
-  box-shadow:none !important;
-  filter:none !important;
-}
-/* keep section titles completely outside the profile pictures */
-.section h2{position:relative !important;z-index:2 !important;margin:24px 0 16px !important;}
-.section .grid{position:relative !important;z-index:1 !important;}
 </style>
+
+<style>
+/* =========================================================
+   PROFILE IMAGE / FEATURED BADGE FIX ONLY
+   Nothing else on the page is changed.
+   The source portrait crops contain an old pink label at the
+   very top, so every card image is clipped slightly from top.
+   Featured cards then receive ONE clean HTML badge.
+   ========================================================= */
+
+/* clip the old baked-in top label from ALL card portraits */
+.card .pic {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.card .pic img {
+  width: 100% !important;
+  height: calc(100% + 30px) !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  transform: translateY(-30px) !important;
+}
+
+/* exactly one clean Featured badge */
+#featured .featured-badge {
+  position: absolute !important;
+  z-index: 20 !important;
+  left: 8px !important;
+  top: 8px !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 5px 10px !important;
+  border-radius: 8px !important;
+  background: #ff2482 !important;
+  color: #fff !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* keep online dot above the portrait */
+.card .online {
+  z-index: 21 !important;
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
